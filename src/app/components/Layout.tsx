@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import {
   Home,
   BookOpen,
@@ -30,21 +31,21 @@ import {
 
 interface LayoutProps {
   children: React.ReactNode;
-  currentPage: string;
-  onNavigate: (page: string) => void;
 }
 
-export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const { theme, toggleTheme } = useTheme();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
 
   const menuItems = [
-    { id: 'dashboard', icon: Home, label: 'Trang chủ' },
-    { id: 'my-courses', icon: BookOpen, label: 'Khóa học của tôi' },
-    { id: 'explore', icon: Compass, label: 'Khám phá' },
-    { id: 'achievements', icon: Award, label: 'Thành tựu' },
-    { id: 'profile', icon: User, label: 'Hồ sơ' },
-    { id: 'settings', icon: SettingsIcon, label: 'Cài đặt' },
+    { id: 'dashboard', path: '/dashboard', icon: Home, label: 'Trang chủ' },
+    { id: 'my-courses', path: '/my-courses', icon: BookOpen, label: 'Khóa học của tôi' },
+    { id: 'explore', path: '/explore', icon: Compass, label: 'Khám phá' },
+    { id: 'achievements', path: '/achievements', icon: Award, label: 'Thành tựu' },
+    { id: 'profile', path: '/profile', icon: User, label: 'Hồ sơ' },
+    { id: 'settings', path: '/settings', icon: SettingsIcon, label: 'Cài đặt' },
   ];
 
   return (
@@ -76,11 +77,11 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
         <nav className="flex-1 p-4 space-y-2">
           {menuItems.map((item) => {
             const Icon = item.icon;
-            const isActive = currentPage === item.id;
+            const isActive = location.pathname === item.path;
             return (
-              <button
+              <Link
                 key={item.id}
-                onClick={() => onNavigate(item.id)}
+                to={item.path}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${isActive
                   ? 'bg-[#2f4a75] text-white shadow-sm'
                   : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
@@ -88,7 +89,7 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
               >
                 <Icon className="h-5 w-5 flex-shrink-0" />
                 {!sidebarCollapsed && <span className="text-sm font-medium">{item.label}</span>}
-              </button>
+              </Link>
             );
           })}
         </nav>
@@ -152,11 +153,11 @@ export function Layout({ children, currentPage, onNavigate }: LayoutProps) {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" sideOffset={8} className="w-56 rounded-xl shadow-lg z-50 bg-white border border-gray-200 p-1">
-                <DropdownMenuItem onClick={() => onNavigate('my-courses')} className="text-sm text-gray-700 rounded-md hover:bg-gray-100">
+                <DropdownMenuItem onClick={() => navigate('/my-courses')} className="text-sm text-gray-700 rounded-md hover:bg-gray-100">
                   Mua hàng của tôi
                 </DropdownMenuItem>
                 <DropdownMenuItem
-                  onClick={() => onNavigate('profile')}
+                  onClick={() => navigate('/profile')}
                   className="text-sm text-white bg-[#4a658c] hover:bg-[#3d5679] focus:bg-[#3d5679] rounded-md"
                 >
                   Hồ sơ của tôi

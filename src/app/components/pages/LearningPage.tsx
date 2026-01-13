@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Play, Pause, Volume2, Maximize, Settings, StickyNote, MessageCircle, HelpCircle, Sparkles, ChevronRight, CheckCircle, ArrowLeft, Check } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent } from '@/app/components/ui/card';
@@ -8,11 +9,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/app/components/ui/ta
 import { ScrollArea } from '@/app/components/ui/scroll-area';
 import { mockCourses } from '@/app/data/mockData';
 
-interface LearningPageProps {
-  courseId: string;
-}
-
-export function LearningPage({ courseId }: LearningPageProps) {
+export function LearningPage() {
+  const { courseId } = useParams<{ courseId: string }>();
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentLesson, setCurrentLesson] = useState(0);
   const [note, setNote] = useState('');

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Grid, List, Star, Clock, Users, Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/app/components/ui/card';
@@ -6,11 +7,8 @@ import { Input } from '@/app/components/ui/input';
 import { Badge } from '@/app/components/ui/badge';
 import { mockCourses } from '@/app/data/mockData';
 
-interface ExploreProps {
-  onNavigate: (page: string, courseId?: string) => void;
-}
-
-export function Explore({ onNavigate }: ExploreProps) {
+export function Explore() {
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -192,7 +190,7 @@ export function Explore({ onNavigate }: ExploreProps) {
                 <Card
                   key={course.id}
                   className="hover:shadow-lg transition-shadow border-0 rounded-xl cursor-pointer overflow-hidden"
-                  onClick={() => onNavigate('course-detail', course.id)}
+                  onClick={() => navigate(`/course/${course.id}`)}
                 >
                   <CardContent className="p-0">
                     <div className="relative h-48 overflow-hidden bg-gray-200">
@@ -247,7 +245,7 @@ export function Explore({ onNavigate }: ExploreProps) {
                 <Card
                   key={course.id}
                   className="hover:shadow-md transition-shadow border-0 rounded-xl cursor-pointer overflow-hidden"
-                  onClick={() => onNavigate('course-detail', course.id)}
+                  onClick={() => navigate(`/course/${course.id}`)}
                 >
                   <CardContent className="p-6 flex gap-6">
                     <div className="relative h-32 w-48 flex-shrink-0 overflow-hidden rounded-lg bg-gray-200">
