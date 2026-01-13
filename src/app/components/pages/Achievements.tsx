@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Award, Download, Share2, ExternalLink, ArrowRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
 import { Badge } from '@/app/components/ui/badge';
 import { mockCourses, mockCertificates } from '@/app/data/mockData';
 
-interface AchievementsProps {
-  onNavigate: (page: string, courseId?: string) => void;
-}
-
-export function Achievements({ onNavigate }: AchievementsProps) {
+export function Achievements() {
+  const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
   const completedCourses = mockCourses.filter((c: any) => c.status === 'completed');
@@ -92,7 +90,7 @@ export function Achievements({ onNavigate }: AchievementsProps) {
                       <Button
                         size="sm"
                         className="bg-[#254a91] hover:bg-[#1e3a6f]"
-                        onClick={() => onNavigate('course-detail', course.id)}
+                        onClick={() => navigate(`/course/${course.id}`)}
                       >
                         Thêm vào LinkedIn
                       </Button>

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { ThemeProvider } from '@/app/context/ThemeContext';
 import { Layout } from '@/app/components/Layout';
 import { Dashboard } from '@/app/components/pages/Dashboard';
@@ -10,49 +11,35 @@ import { Achievements } from '@/app/components/pages/Achievements';
 import { Settings } from '@/app/components/pages/Settings';
 import { CourseDetail } from '@/app/components/pages/CourseDetail';
 
-type Page = 'dashboard' | 'my-courses' | 'explore' | 'learning' | 'profile' | 'achievements' | 'settings' | 'course-detail';
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname]);
+
+  return null;
+}
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('dashboard');
-  const [selectedCourseId, setSelectedCourseId] = useState<string | undefined>();
-
-  const handleNavigate = (page: string, courseId?: string) => {
-    setCurrentPage(page as Page);
-    if (courseId) {
-      setSelectedCourseId(courseId);
-    }
-    // Scroll to top when navigating
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'dashboard':
-        return <Dashboard onNavigate={handleNavigate} />;
-      case 'my-courses':
-        return <MyCourses onNavigate={handleNavigate} />;
-      case 'explore':
-        return <Explore onNavigate={handleNavigate} />;
-      case 'learning':
-        return <LearningPage courseId={selectedCourseId || '1'} />;
-      case 'profile':
-        return <Profile onNavigate={handleNavigate} />;
-      case 'achievements':
-        return <Achievements onNavigate={handleNavigate} />;
-      case 'settings':
-        return <Settings />;
-      case 'course-detail':
-        return <CourseDetail courseId={selectedCourseId || '1'} onNavigate={handleNavigate} />;
-      default:
-        return <Dashboard onNavigate={handleNavigate} />;
-    }
-  };
-
   return (
     <ThemeProvider>
-      <Layout currentPage={currentPage} onNavigate={handleNavigate}>
-        {renderPage()}
-      </Layout>
+      <BrowserRouter>
+        <ScrollToTop />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/my-courses" element={<MyCourses />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/course/:courseId" element={<CourseDetail />} />
+            <Route path="/learning/:courseId" element={<LearningPage />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/achievements" element={<Achievements />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </Layout>
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

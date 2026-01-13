@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Grid, List, Star, Clock, Users, ArrowRight } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent } from '@/app/components/ui/card';
@@ -8,11 +9,8 @@ import { Input } from '@/app/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/app/components/ui/select';
 import { mockCourses } from '@/app/data/mockData';
 
-interface MyCoursesProps {
-  onNavigate: (page: string, courseId?: string) => void;
-}
-
-export function MyCourses({ onNavigate }: MyCoursesProps) {
+export function MyCourses() {
+  const navigate = useNavigate();
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('list');
   const [statusFilter, setStatusFilter] = useState<string>('all');
   const [levelFilter, setLevelFilter] = useState<string>('all');
@@ -97,7 +95,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
             variant={viewMode === 'grid' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setViewMode('grid')}
-            className={viewMode === 'grid' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'hover:bg-gray-100'}
+            className={viewMode === 'grid' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100'}
           >
             <Grid className="h-4 w-4" />
           </Button>
@@ -105,7 +103,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
             variant={viewMode === 'list' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setViewMode('list')}
-            className={viewMode === 'list' ? 'bg-gray-900 text-white hover:bg-gray-800' : 'hover:bg-gray-100'}
+            className={viewMode === 'list' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100'}
           >
             <List className="h-4 w-4" />
           </Button>
@@ -157,7 +155,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
                       </div>
                       <Button
                         size="sm"
-                        onClick={() => onNavigate('learning', course.id)}
+                        onClick={() => navigate(`/learning/${course.id}`)}
                         className="bg-[#254a91] hover:bg-[#1d3a75]"
                       >
                         Học tiếp
@@ -244,7 +242,7 @@ export function MyCourses({ onNavigate }: MyCoursesProps) {
 
                   <Button
                     className="w-full"
-                    onClick={() => onNavigate('learning', course.id)}
+                    onClick={() => navigate(`/learning/${course.id}`)}
                   >
                     {course.status === 'completed' ? 'Xem lại' : 'Tiếp tục học'}
                   </Button>

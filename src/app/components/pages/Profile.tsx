@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Clock, Users, Flame, Award, ArrowRight, Calendar, Shield, Star, BookOpen } from 'lucide-react';
 import { Card, CardContent } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
@@ -7,11 +8,8 @@ import { Badge } from '@/app/components/ui/badge';
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/components/ui/avatar';
 import { mockCourses, mockAssignments } from '@/app/data/mockData';
 
-interface ProfileProps {
-  onNavigate: (page: string, courseId?: string) => void;
-}
-
-export function Profile({ onNavigate }: ProfileProps) {
+export function Profile() {
+  const navigate = useNavigate();
   const ongoingCourses = mockCourses.filter((c) => c.status === 'ongoing');
   const completedCourses = mockCourses.filter((c) => c.status === 'completed');
   const totalProgress = Math.round(
@@ -48,7 +46,7 @@ export function Profile({ onNavigate }: ProfileProps) {
                 </div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" className="border-[#254a91] text-[#254a91]" onClick={() => onNavigate('settings')}>
+                <Button variant="outline" className="border-[#254a91] text-[#254a91]" onClick={() => navigate('/settings')}>
                   Chỉnh sửa hồ sơ
                 </Button>
               </div>
@@ -128,7 +126,7 @@ export function Profile({ onNavigate }: ProfileProps) {
                     <Progress value={course.progress} className="flex-1 h-2" />
                     <span className="text-sm font-semibold text-gray-700">{course.progress}%</span>
                   </div>
-                  <Button size="sm" className="mt-3 bg-[#254a91] hover:bg-[#1f3d70]" onClick={() => onNavigate('learning', course.id)}>
+                  <Button size="sm" className="mt-3 bg-[#254a91] hover:bg-[#1f3d70]" onClick={() => navigate(`/learning/${course.id}`)}>
                     Tiếp tục học
                   </Button>
                 </div>
@@ -181,7 +179,7 @@ export function Profile({ onNavigate }: ProfileProps) {
               <p className="text-xs text-gray-500">Chứng nhận của tôi</p>
               <h2 className="text-lg font-semibold text-gray-900">Chứng nhận của tôi</h2>
             </div>
-            <Button variant="ghost" className="text-[#254a91]" onClick={() => onNavigate('achievements')}>
+            <Button variant="ghost" className="text-[#254a91]" onClick={() => navigate('/achievements')}>
               Xem tất cả
             </Button>
           </div>

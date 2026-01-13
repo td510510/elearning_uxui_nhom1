@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Clock, CheckCircle2, Flame, CalendarRange, Star, Users } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
@@ -6,11 +7,8 @@ import { Progress } from '@/app/components/ui/progress';
 import { Badge } from '@/app/components/ui/badge';
 import { mockCourses, mockAssignments } from '@/app/data/mockData';
 
-interface DashboardProps {
-  onNavigate: (page: string, courseId?: string) => void;
-}
-
-export function Dashboard({ onNavigate }: DashboardProps) {
+export function Dashboard() {
+  const navigate = useNavigate();
   const ongoingCourses = mockCourses.filter((c) => c.status === 'ongoing');
   const completedCourses = mockCourses.filter((c) => c.status === 'completed');
   const upcomingAssignments = mockAssignments.slice(0, 3);
@@ -90,7 +88,7 @@ export function Dashboard({ onNavigate }: DashboardProps) {
                 </div>
                 <div className="flex flex-col gap-2">
                   <Badge className="bg-[#f0f4ff] text-[#254a91]">Cơ bản</Badge>
-                  <Button size="sm" onClick={() => onNavigate('learning', course.id)}>
+                  <Button size="sm" onClick={() => navigate(`/learning/${course.id}`)}>
                     Học tiếp
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Star, Users, Clock, CheckCircle, Award, BookOpen, Play, ShoppingCart, Heart } from 'lucide-react';
 import { Card, CardContent } from '@/app/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/components/ui/avatar';
@@ -8,12 +9,9 @@ import { Progress } from '@/app/components/ui/progress';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/app/components/ui/accordion';
 import { mockCourses } from '@/app/data/mockData';
 
-interface CourseDetailProps {
-  courseId: string;
-  onNavigate: (page: string, courseId?: string) => void;
-}
-
-export function CourseDetail({ courseId, onNavigate }: CourseDetailProps) {
+export function CourseDetail() {
+  const navigate = useNavigate();
+  const { courseId } = useParams<{ courseId: string }>();
   const course = mockCourses.find((c) => c.id === courseId) || mockCourses[0];
 
   const modules = [
