@@ -24,7 +24,7 @@ export function Profile() {
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
               <p className="text-xs text-gray-500">Hồ sơ của tôi</p>
-              <h1 className="text-2xl font-bold text-gray-900">Tên học sinh</h1>
+              <h1 className="text-2xl font-bold text-gray-900">Nguyễn Văn A</h1>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-start gap-6">
               <div className="flex items-center gap-4 flex-1">
@@ -109,7 +109,7 @@ export function Profile() {
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-xs text-gray-500">Hoạt động gần đây</p>
-                <h2 className="text-lg font-semibold text-gray-900">Quick CTA khóa đang học</h2>
+                <h2 className="text-lg font-semibold text-gray-900">Xem nhanh khóa đang học</h2>
               </div>
               <Button variant="ghost" className="text-[#254a91]">Xem tất cả</Button>
             </div>
