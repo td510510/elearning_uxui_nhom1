@@ -239,12 +239,12 @@ export function Layout({ children }: LayoutProps) {
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Học học nữa, học mãi</p>
                   </div>
                   <div className="flex gap-6 text-sm text-gray-700 dark:text-gray-400 mt-4 md:mt-0">
-                    <a href="#" className="hover:text-[#254a91]">Điều khoản điều lệ</a>
-                    <a href="#" className="hover:text-[#254a91]">Chính sách quyền riêng tư</a>
+                    <a href="#" className="hover:text-[#254a91] dark:text-white">Điều khoản điều lệ</a>
+                    <a href="#" className="hover:text-[#254a91] dark:text-white">Chính sách quyền riêng tư</a>
                   </div>
                 </div>
                 <div className="pt-2">
-                  <p className="text-xs text-gray-600 dark:text-gray-500">©2026 Company Name. All rights reserved</p>
+                  <p className="text-xs text-gray-600 dark:text-white">©2026 Company Name. All rights reserved</p>
                 </div>
               </div>
             </div>

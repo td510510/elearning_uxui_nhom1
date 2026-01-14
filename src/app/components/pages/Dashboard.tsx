@@ -40,7 +40,7 @@ export function Dashboard() {
               <Button size="lg" className="bg-white text-[#254a91] hover:bg-gray-100" onClick={() => navigate('/register')}>
                 Đăng ký miễn phí
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => navigate('/login')}>
+              <Button size="lg" className="bg-white text-[#254a91] hover:bg-gray-100" onClick={() => navigate('/login')}>
                 Đăng nhập
               </Button>
             </div>
@@ -144,7 +144,7 @@ export function Dashboard() {
     <div className="space-y-6">
       {/* Page Title */}
       <div>
-        <p className="text-sm text-gray-500">Tiến độ tổng quan</p>
+        <p className="text-sm text-gray-500 dark:text-white">Tiến độ tổng quan</p>
       </div>
 
       {/* Progress and Stats Row */}
@@ -175,10 +175,10 @@ export function Dashboard() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500">Tiếp tục học</p>
-                <CardTitle className="text-[#254a91]">Khóa học của tôi</CardTitle>
+                <p className="text-sm text-gray-500 dark:text-white">Tiếp tục học</p>
+                <CardTitle className="text-[#254a91] dark:text-blue-400">Khóa học của tôi</CardTitle>
               </div>
-              <div className="flex items-center gap-2 text-sm text-gray-600">
+              <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                 <span>Trang thái</span>
                 <Badge variant="secondary">Đang học</Badge>
               </div>
@@ -236,8 +236,8 @@ export function Dashboard() {
 
         <Card className="border-0 shadow-sm">
           <CardHeader>
-            <CardTitle className="text-[#254a91]">Lịch học</CardTitle>
-            <p className="text-sm text-gray-500">Nhiệm vụ sắp tới</p>
+            <CardTitle className="text-[#254a91] dark:text-white">Lịch học</CardTitle>
+            <p className="text-sm text-gray-500 dark:text-white">Nhiệm vụ sắp tới</p>
           </CardHeader>
           <CardContent className="space-y-3">
             {upcomingAssignments.map((assignment, index) => {
@@ -274,7 +274,7 @@ export function Dashboard() {
       <Card className="border-0 shadow-sm">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle className="text-[#254a91]">Khóa học gợi ý</CardTitle>
+            <CardTitle className="text-[#254a91] dark:text-white">Khóa học gợi ý</CardTitle>
             <div className="flex gap-2">
               <span className="h-2 w-2 rounded-full bg-[#254a91]" />
               <span className="h-2 w-2 rounded-full bg-gray-300" />

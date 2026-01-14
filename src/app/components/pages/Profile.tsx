@@ -23,30 +23,30 @@ export function Profile() {
         <CardContent className="p-6">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <p className="text-xs text-gray-500">Hồ sơ của tôi</p>
-              <h1 className="text-2xl font-bold text-gray-900">Nguyễn Văn A</h1>
+              <p className="text-xs text-gray-500 dark:text-gray-400">Hồ sơ của tôi</p>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Nguyễn Văn A</h1>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-start gap-6">
               <div className="flex items-center gap-4 flex-1">
-                <Avatar className="h-20 w-20 border border-[#d7e2ff]">
+                <Avatar className="h-20 w-20 border border-[#d7e2ff] dark:border-gray-600">
                   <AvatarImage src="https://api.dicebear.com/7.x/miniavs/svg?seed=student" alt="Avatar" />
                   <AvatarFallback>
-                    <div className="h-full w-full rounded-full bg-gray-200" />
+                    <div className="h-full w-full rounded-full bg-gray-200 dark:bg-gray-700" />
                   </AvatarFallback>
                 </Avatar>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
-                    <Shield className="h-4 w-4 text-[#254a91]" />
-                    <span className="text-sm text-gray-600">Tham gia tháng 3, 2025</span>
+                    <Shield className="h-4 w-4 text-[#254a91] dark:text-blue-400" />
+                    <span className="text-sm text-gray-600 dark:text-gray-400">Tham gia tháng 3, 2025</span>
                   </div>
-                  <div className="flex items-center gap-2 text-sm text-gray-600">
+                  <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
                     <Clock className="h-4 w-4" />
                     <span>124 giờ học</span>
                   </div>
                 </div>
               </div>
               <div className="flex gap-3">
-                <Button variant="outline" className="border-[#254a91] text-[#254a91]" onClick={() => navigate('/settings')}>
+                <Button variant="outline" className="border-[#254a91] text-[#254a91] dark:border-blue-400 dark:text-blue-400" onClick={() => navigate('/settings')}>
                   Chỉnh sửa hồ sơ
                 </Button>
               </div>
@@ -60,29 +60,29 @@ export function Profile() {
         <Card className="border-0 shadow-sm lg:col-span-3">
           <CardContent className="p-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
-              <div className="p-3 rounded-lg bg-white border border-[#e5edff] shadow-sm">
-                <div className="flex items-center justify-between text-sm text-gray-600">
+              <div className="p-3 rounded-lg bg-white dark:bg-gray-800 border border-[#e5edff] dark:border-gray-700 shadow-sm">
+                <div className="flex items-center justify-between text-sm text-gray-600 dark:text-gray-400">
                   <span>Tiến độ tổng</span>
                   <span>{totalProgress}%</span>
                 </div>
                 <Progress value={totalProgress} className="mt-2 h-2" />
-                <p className="text-xs text-gray-500 mt-1">Học hoàn thành 50% trong tháng</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Học hoàn thành 50% trong tháng</p>
               </div>
-              <div className="p-3 rounded-lg bg-white border border-[#e5edff] shadow-sm">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <BookOpen className="h-4 w-4 text-[#254a91]" />
+              <div className="p-3 rounded-lg bg-white dark:bg-gray-800 border border-[#e5edff] dark:border-gray-700 shadow-sm">
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <BookOpen className="h-4 w-4 text-[#254a91] dark:text-blue-400" />
                   <span>Số khóa đang học</span>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 mt-2">{ongoingCourses.length}</p>
-                <p className="text-xs text-gray-500">5/18 bài</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">{ongoingCourses.length}</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">5/18 bài</p>
               </div>
-              <div className="p-3 rounded-lg bg-white border border-[#e5edff] shadow-sm">
-                <div className="flex items-center gap-2 text-sm text-gray-600">
-                  <Award className="h-4 w-4 text-[#254a91]" />
+              <div className="p-3 rounded-lg bg-white dark:bg-gray-800 border border-[#e5edff] dark:border-gray-700 shadow-sm">
+                <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
+                  <Award className="h-4 w-4 text-[#254a91] dark:text-blue-400" />
                   <span>Chứng chỉ đạt được</span>
                 </div>
-                <p className="text-2xl font-bold text-gray-900 mt-2">3</p>
-                <p className="text-xs text-gray-500">Đang chờ nhận thêm</p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white mt-2">3</p>
+                <p className="text-xs text-gray-500 dark:text-gray-400">Đang chờ nhận thêm</p>
               </div>
             </div>
           </CardContent>

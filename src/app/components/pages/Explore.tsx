@@ -52,8 +52,8 @@ export function Explore() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <p className="text-sm text-gray-500">Khám phá</p>
-        <h1 className="text-3xl font-bold text-[#254a91]">Tìm thấy khóa học</h1>
+        <p className="text-sm text-gray-500 dark:text-white">Khám phá</p>
+        <h1 className="text-3xl font-bold text-[#254a91] dark:text-blue-400">Tìm thấy khóa học</h1>
       </div>
 
       {/* Search Bar */}

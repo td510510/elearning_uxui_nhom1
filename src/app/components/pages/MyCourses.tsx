@@ -36,20 +36,20 @@ export function MyCourses() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <Card className="border-0 shadow-sm">
           <CardContent className="pt-6 text-center">
-            <p className="text-4xl font-bold text-[#254a91]">{mockCourses.length}</p>
-            <p className="text-sm text-gray-600">Tổng số khóa học</p>
+            <p className="text-4xl font-bold text-[#254a91] dark:text-white">{mockCourses.length}</p>
+            <p className="text-sm text-gray-600 dark:text-white">Tổng số khóa học</p>
           </CardContent>
         </Card>
         <Card className="border-0 shadow-sm">
           <CardContent className="pt-6 text-center">
-            <p className="text-4xl font-bold text-[#254a91]">{mockCourses.filter(c => c.status === 'ongoing').length}</p>
-            <p className="text-sm text-gray-600">Đang học</p>
+            <p className="text-4xl font-bold text-[#254a91] dark:text-white">{mockCourses.filter(c => c.status === 'ongoing').length}</p>
+            <p className="text-sm text-gray-600 dark:text-white">Đang học</p>
           </CardContent>
         </Card>
         <Card className="border-0 shadow-sm">
           <CardContent className="pt-6 text-center">
-            <p className="text-4xl font-bold text-[#254a91]">{mockCourses.filter(c => c.status === 'completed').length}</p>
-            <p className="text-sm text-gray-600">Đã hoàn thành</p>
+            <p className="text-4xl font-bold text-[#254a91] dark:text-white">{mockCourses.filter(c => c.status === 'completed').length}</p>
+            <p className="text-sm text-gray-600 dark:text-white">Đã hoàn thành</p>
           </CardContent>
         </Card>
       </div>
@@ -68,7 +68,7 @@ export function MyCourses() {
             </SelectContent>
           </Select>
           <Select value={levelFilter} onValueChange={setLevelFilter}>
-            <SelectTrigger className="w-44 bg-white border-red-500 text-red-600">
+            <SelectTrigger className="w-44 bg-white border-green-500 text-green-600">
               <SelectValue placeholder="Giáo viên A" />
             </SelectTrigger>
             <SelectContent>
@@ -95,7 +95,7 @@ export function MyCourses() {
             variant={viewMode === 'grid' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setViewMode('grid')}
-            className={viewMode === 'grid' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100'}
+            className={viewMode === 'grid' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100 dark:bg-gray-500'}
           >
             <Grid className="h-4 w-4" />
           </Button>
@@ -103,7 +103,7 @@ export function MyCourses() {
             variant={viewMode === 'list' ? 'default' : 'ghost'}
             size="sm"
             onClick={() => setViewMode('list')}
-            className={viewMode === 'list' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100'}
+            className={viewMode === 'list' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100 dark:bg-gray-500'}
           >
             <List className="h-4 w-4" />
           </Button>
@@ -124,19 +124,19 @@ export function MyCourses() {
                   />
                   <div className="flex-1 flex flex-col">
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                      <h3 className="text-lg font-semibold text-gray-900 mb-1 dark:text-white">
                         {course.title}
                       </h3>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-sm text-gray-600 dark:text-white">
                         {course.instructor}
                       </p>
                     </div>
 
                     <div className="mt-4">
-                      <p className="text-sm text-gray-600 mb-2">Tiến độ học tập</p>
+                      <p className="text-sm text-gray-600 mb-2 dark:text-white">Tiến độ học tập</p>
                       <div className="flex items-center gap-3">
                         <Progress value={course.progress} className="flex-1 h-2" />
-                        <span className="text-sm font-semibold text-gray-900 min-w-[3rem] text-right">
+                        <span className="text-sm font-semibold text-gray-900 min-w-[3rem] text-right dark:text-white">
                           {course.progress}%
                         </span>
                       </div>
@@ -145,13 +145,13 @@ export function MyCourses() {
                     <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-100">
                       <div className="flex items-center gap-4 text-sm text-gray-600">
                         <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>32 giờ</span>
+                          <Clock className="h-4 w-4 dark:text-white" />
+                          <span className="dark:text-white">32 giờ</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <span>📚 156 bài học</span>
+                          <span className="dark:text-white">📚 156 bài học</span>
                         </div>
-                        <span>Truy cập lần cuối: 2 ngày trước</span>
+                        <span className="dark:text-white">Truy cập lần cuối: 2 ngày trước</span>
                       </div>
                       <Button
                         size="sm"
@@ -175,7 +175,7 @@ export function MyCourses() {
                 size="sm"
                 onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
                 disabled={currentPage === 1}
-                className="text-gray-600"
+                className="text-gray-600 dark:text-white"
               >
                 Trước
               </Button>
@@ -185,7 +185,7 @@ export function MyCourses() {
                   variant={currentPage === index + 1 ? 'default' : 'ghost'}
                   size="sm"
                   onClick={() => setCurrentPage(index + 1)}
-                  className={currentPage === index + 1 ? 'bg-gray-900 text-white hover:bg-gray-800' : 'text-gray-600'}
+                  className={currentPage === index + 1 ? 'bg-gray-900 text-white hover:bg-gray-800' : 'text-gray-600 dark:text-white'}
                 >
                   {index + 1}
                 </Button>
@@ -195,7 +195,7 @@ export function MyCourses() {
                 size="sm"
                 onClick={() => setCurrentPage(Math.min(Math.ceil(filteredCourses.length / itemsPerPage), currentPage + 1))}
                 disabled={currentPage === Math.ceil(filteredCourses.length / itemsPerPage)}
-                className="text-gray-600"
+                className="text-gray-600 dark:text-white"
               >
                 Sau
               </Button>
@@ -227,8 +227,8 @@ export function MyCourses() {
                       <span>{course.rating}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      <span>{course.totalHours}h</span>
+                      <Clock className="h-4 w-4 dark:text-white" />
+                      <span className="dark:text-white">{course.totalHours}h</span>
                     </div>
                   </div>
 
