@@ -56,8 +56,8 @@ export function Achievements() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <p className="text-sm text-gray-500">Thành tựu</p>
-        <h1 className="text-3xl font-bold text-[#254a91]">Thành tựu của tôi</h1>
+        <p className="text-sm text-gray-500 dark:text-gray-400">Thành tựu</p>
+        <h1 className="text-3xl font-bold text-[#254a91] dark:text-blue-400">Thành tựu của tôi</h1>
       </div>
 
       {/* Main Layout - Two Columns */}
@@ -81,7 +81,7 @@ export function Achievements() {
 
                     {/* Content */}
                     <div className="flex-1">
-                      <h3 className="font-semibold text-[#254a91] mb-2 text-lg">
+                      <h3 className="font-semibold text-[#254a91] dark:text-blue-400 mb-2 text-lg">
                         {course.title}
                       </h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -89,7 +89,7 @@ export function Achievements() {
                       </p>
                       <Button
                         size="sm"
-                        className="bg-[#254a91] hover:bg-[#1e3a6f]"
+                        className="bg-[#254a91] hover:bg-[#1e3a6f] dark:bg-blue-600 dark:hover:bg-blue-700"
                         onClick={() => navigate(`/course/${course.id}`)}
                       >
                         Thêm vào LinkedIn
@@ -178,7 +178,7 @@ export function Achievements() {
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full mt-4 border-[#254a91] text-[#254a91] hover:bg-[#254a91] hover:text-white"
+                className="w-full mt-4 border-[#254a91] text-[#254a91] hover:bg-[#254a91] hover:text-white dark:text-white"
               >
                 Hiển thị thêm 2
               </Button>
@@ -216,7 +216,7 @@ export function Achievements() {
                     </div>
                   </div>
                   <div className="p-4">
-                    <h3 className="font-semibold text-[#254a91] mb-2 group-hover:underline">
+                    <h3 className="font-semibold text-[#254a91] mb-2 group-hover:underline dark:text-white">
                       {course.title}
                     </h3>
                     <p className="text-sm text-gray-600 dark:text-gray-400">
