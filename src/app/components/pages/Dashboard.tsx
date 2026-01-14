@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Clock, CheckCircle2, Flame, CalendarRange, Star, Users } from 'lucide-react';
+import { ArrowRight, Clock, CheckCircle2, Flame, CalendarRange, Star, Users, BookOpen, TrendingUp } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
 import { Progress } from '@/app/components/ui/progress';
 import { Badge } from '@/app/components/ui/badge';
+import { useAuth } from '@/app/context/AuthContext';
 import { mockCourses, mockAssignments } from '@/app/data/mockData';
 
 export function Dashboard() {
   const navigate = useNavigate();
+  const { isAuthenticated } = useAuth();
   const ongoingCourses = mockCourses.filter((c) => c.status === 'ongoing');
   const completedCourses = mockCourses.filter((c) => c.status === 'completed');
   const upcomingAssignments = mockAssignments.slice(0, 3);
@@ -21,6 +23,123 @@ export function Dashboard() {
     ongoingCourses.reduce((sum, c) => sum + c.progress, 0) / ongoingCourses.length
   );
 
+  // Show different content for non-authenticated users
+  if (!isAuthenticated) {
+    return (
+      <div className="space-y-6">
+        {/* Welcome Banner */}
+        <Card className="border-0 shadow-lg bg-gradient-to-br from-[#254a91] to-[#4a7cc7] text-white">
+          <CardContent className="py-12 px-8 text-center">
+            <BookOpen className="h-16 w-16 mx-auto mb-4 opacity-90" />
+            <h1 className="text-4xl font-bold mb-3">Chào mừng đến với StudyClub</h1>
+            <p className="text-xl mb-6 text-blue-100">Nền tảng học tập trực tuyến hàng đầu</p>
+            <p className="text-blue-100 mb-8 max-w-2xl mx-auto">
+              Khám phá hàng nghìn khóa học chất lượng cao, học tập với các giảng viên hàng đầu và phát triển kỹ năng của bạn
+            </p>
+            <div className="flex gap-4 justify-center">
+              <Button size="lg" className="bg-white text-[#254a91] hover:bg-gray-100" onClick={() => navigate('/register')}>
+                Đăng ký miễn phí
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" onClick={() => navigate('/login')}>
+                Đăng nhập
+              </Button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Statistics */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <Card className="border-0 shadow-sm">
+            <CardContent className="pt-6 text-center">
+              <TrendingUp className="h-12 w-12 mx-auto mb-3 text-[#254a91]" />
+              <p className="text-4xl font-bold text-[#254a91] mb-2">10,000+</p>
+              <p className="text-gray-600">Khóa học chất lượng</p>
+            </CardContent>
+          </Card>
+          <Card className="border-0 shadow-sm">
+            <CardContent className="pt-6 text-center">
+              <Users className="h-12 w-12 mx-auto mb-3 text-[#254a91]" />
+              <p className="text-4xl font-bold text-[#254a91] mb-2">500,000+</p>
+              <p className="text-gray-600">Học viên đã tin tưởng</p>
+            </CardContent>
+          </Card>
+          <Card className="border-0 shadow-sm">
+            <CardContent className="pt-6 text-center">
+              <Star className="h-12 w-12 mx-auto mb-3 text-[#254a91]" />
+              <p className="text-4xl font-bold text-[#254a91] mb-2">4.8/5</p>
+              <p className="text-gray-600">Đánh giá trung bình</p>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Suggested Courses */}
+        <Card className="border-0 shadow-sm">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="text-[#254a91] text-2xl">Khóa học phổ biến</CardTitle>
+                <p className="text-gray-500 mt-1">Khám phá các khóa học được yêu thích nhất</p>
+              </div>
+              <Button variant="outline" onClick={() => navigate('/explore')}>
+                Xem tất cả
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {mockCourses.slice(0, 6).map((course) => (
+                <div
+                  key={course.id}
+                  className="rounded-xl overflow-hidden bg-white hover:shadow-lg border border-gray-200 transition-all cursor-pointer"
+                  onClick={() => navigate(`/course/${course.id}`)}
+                >
+                  <div className="h-48 bg-gray-100 overflow-hidden">
+                    <img src={course.thumbnail} alt={course.title} className="h-full w-full object-cover hover:scale-105 transition-transform" />
+                  </div>
+                  <div className="p-4">
+                    <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                      <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
+                      <span className="font-semibold">{course.rating}</span>
+                      <span className="text-gray-400">•</span>
+                      <Users className="h-4 w-4" />
+                      <span>{(course.students / 1000).toFixed(1)}k học viên</span>
+                    </div>
+                    <h3 className="font-semibold text-[#254a91] mb-2 line-clamp-2">{course.title}</h3>
+                    <p className="text-sm text-gray-600 mb-3">{course.instructor}</p>
+                    <div className="flex items-center justify-between">
+                      <Badge className="bg-[#f0f4ff] text-[#254a91]">{course.category}</Badge>
+                      <Button size="sm" onClick={() => navigate('/register')}>
+                        Đăng ký học
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* CTA Section */}
+        <Card className="border-0 shadow-sm bg-gradient-to-r from-blue-50 to-purple-50">
+          <CardContent className="py-12 text-center">
+            <h2 className="text-3xl font-bold text-[#254a91] mb-4">
+              Sẵn sàng bắt đầu hành trình học tập?
+            </h2>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              Tham gia cùng hàng nghìn học viên đang học tập và phát triển kỹ năng mỗi ngày
+            </p>
+            <Button size="lg" className="bg-[#254a91] hover:bg-[#1e3a73]" onClick={() => navigate('/register')}>
+              Bắt đầu miễn phí ngay
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
+  // Authenticated user dashboard
   return (
     <div className="space-y-6">
       {/* Page Title */}
