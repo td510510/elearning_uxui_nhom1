@@ -52,7 +52,6 @@ export function Explore() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <p className="text-sm text-gray-500 dark:text-white">Khám phá</p>
         <h1 className="text-3xl font-bold text-[#254a91] dark:text-blue-400">Tìm thấy khóa học</h1>
       </div>
 
@@ -121,7 +120,7 @@ export function Explore() {
           <Card className="border-0 shadow-sm rounded-xl">
             <CardHeader className="pb-3 flex items-center justify-between">
               <h3 className="font-semibold text-gray-900 dark:text-white text-sm">Đánh giá tối thiểu</h3>
-              <button className="text-xs text-[#254a91] hover:underline font-medium">
+              <button className="text-xs text-[#254a91] dark:text-blue-400 hover:underline font-medium">
                 Tất cả
               </button>
             </CardHeader>
@@ -157,26 +156,21 @@ export function Explore() {
             <p className="text-sm text-gray-600 dark:text-gray-400">
               Hiển thị {filteredCourses.length} khóa học
             </p>
-            <div className="flex gap-2 bg-white rounded-full p-1 border border-gray-200">
+            {/* View Toggle */}
+            <div className="flex gap-1 bg-white rounded-lg border border-gray-200 p-1">
               <Button
                 variant={viewMode === 'grid' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => {
-                  setViewMode('grid');
-                  setCurrentPage(1);
-                }}
-                className={viewMode === 'grid' ? 'bg-[#254a91] text-white hover:bg-[#1e3a6f]' : ''}
+                onClick={() => setViewMode('grid')}
+                className={viewMode === 'grid' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100 dark:bg-gray-500'}
               >
                 <Grid className="h-4 w-4" />
               </Button>
               <Button
                 variant={viewMode === 'list' ? 'default' : 'ghost'}
                 size="sm"
-                onClick={() => {
-                  setViewMode('list');
-                  setCurrentPage(1);
-                }}
-                className={viewMode === 'list' ? 'bg-[#254a91] text-white hover:bg-[#1e3a6f]' : ''}
+                onClick={() => setViewMode('list')}
+                className={viewMode === 'list' ? 'bg-[#254a91] text-white hover:bg-[#254a91]' : 'hover:bg-gray-100 dark:bg-gray-500'}
               >
                 <List className="h-4 w-4" />
               </Button>
@@ -204,7 +198,7 @@ export function Explore() {
                       </Badge>
                     </div>
                     <div className="p-4">
-                      <h3 className="font-semibold text-[#254a91] mb-1 line-clamp-2 h-14">
+                      <h3 className="font-semibold text-[#254a91] dark:text-blue-400 mb-1 line-clamp-2 h-14">
                         {course.title}
                       </h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
@@ -213,19 +207,19 @@ export function Explore() {
                       <div className="flex items-center gap-4 text-sm mb-4 text-gray-600">
                         <div className="flex items-center gap-1">
                           <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          <span>{course.rating}</span>
+                          <span className="dark:text-gray-400">{course.rating}</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Clock className="h-4 w-4" />
-                          <span>{course.totalHours}h</span>
+                          <Clock className="h-4 w-4 dark:text-gray-400" />
+                          <span className="dark:text-gray-400">{course.totalHours}h</span>
                         </div>
                         <div className="flex items-center gap-1">
-                          <Users className="h-4 w-4" />
-                          <span>{course.students}</span>
+                          <Users className="h-4 w-4 dark:text-gray-400" />
+                          <span className="dark:text-gray-400">{course.students}</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between pt-3 border-t border-gray-200">
-                        <span className="text-lg font-bold text-[#254a91]">
+                        <span className="text-lg font-bold text-[#254a91] dark:text-blue-400">
                           {course.price > 0
                             ? `${course.price.toLocaleString('vi-VN')}đ`
                             : 'Miễn phí'}
@@ -261,7 +255,7 @@ export function Explore() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
                         <div>
-                          <h3 className="font-semibold text-lg text-[#254a91] mb-1">
+                          <h3 className="font-semibold text-lg text-[#254a91] dark:text-blue-400 mb-1">
                             {course.title}
                           </h3>
                           <p className="text-sm text-gray-600 dark:text-gray-400">
@@ -290,7 +284,7 @@ export function Explore() {
                       </p>
 
                       <div className="flex items-center justify-between">
-                        <span className="text-lg font-bold text-[#254a91]">
+                        <span className="text-lg font-bold text-[#254a91] dark:text-blue-400">
                           {course.price > 0
                             ? `${course.price.toLocaleString('vi-VN')}đ`
                             : 'Miễn phí'}
