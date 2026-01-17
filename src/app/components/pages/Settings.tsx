@@ -21,7 +21,6 @@ export function Settings() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <p className="text-sm text-gray-500">Cài đặt</p>
         <h1 className="text-3xl font-bold text-[#254a91]">Cài đặt</h1>
       </div>
 

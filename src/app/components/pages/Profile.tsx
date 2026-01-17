@@ -23,7 +23,6 @@ export function Profile() {
         <CardContent className="p-6">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <p className="text-xs text-gray-500 dark:text-gray-400">Hồ sơ của tôi</p>
               <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Nguyễn Văn A</h1>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-start gap-6">
