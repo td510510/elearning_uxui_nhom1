@@ -69,9 +69,16 @@ export function MyCourses() {
           </Select>
           <Select value={levelFilter} onValueChange={setLevelFilter}>
             <SelectTrigger className="w-44 bg-white border-green-500 text-green-600">
-              <SelectValue placeholder="Giáo viên A" />
+              <SelectValue placeholder="Giáo viên" />
             </SelectTrigger>
             <SelectContent>
+              <div className="p-2">
+                <Input
+                  placeholder="Tìm kiếm giáo viên..."
+                  className="mb-2"
+                  onClick={(e) => e.stopPropagation()}
+                />
+              </div>
               <SelectItem value="all">Tất cả giáo viên</SelectItem>
               <SelectItem value="giaovienA">Giáo viên A</SelectItem>
               <SelectItem value="giaovienB">Giáo viên B</SelectItem>

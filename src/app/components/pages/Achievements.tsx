@@ -29,25 +29,25 @@ export function Achievements() {
     {
       id: 1,
       course: 'React Fundamentals',
-      author: 'Jack Smith',
+      author: 'Nguyễn Văn A',
       rating: 5,
-      comment: '"Definitely one of the best burgers in town!"',
+      comment: '"Khóa học rất bổ ích và dễ hiểu!"',
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jack'
     },
     {
       id: 2,
       course: 'Advanced JavaScript',
-      author: 'Jack Smith',
+      author: 'Nguyễn Văn A',
       rating: 5,
-      comment: '"Definitely one of the best burgers in town!"',
+      comment: '"Khóa học rất bổ ích và dễ hiểu!"',
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jack2'
     },
     {
       id: 3,
       course: 'Python for Beginners',
-      author: 'Jack Smith',
+      author: 'Nguyễn Văn A',
       rating: 5,
-      comment: '"Definitely one of the best burgers in town!"',
+      comment: '"Khóa học rất bổ ích và dễ hiểu!"',
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jack3'
     }
   ];
@@ -56,7 +56,6 @@ export function Achievements() {
     <div className="space-y-6">
       {/* Header */}
       <div>
-        <p className="text-sm text-gray-500 dark:text-gray-400">Thành tựu</p>
         <h1 className="text-3xl font-bold text-[#254a91] dark:text-blue-400">Thành tựu của tôi</h1>
       </div>
 
@@ -146,7 +145,6 @@ export function Achievements() {
               <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
                 Đánh giá khóa học
               </h2>
-              <p className="text-sm text-gray-500 mt-1">MyFeedback</p>
             </CardHeader>
             <CardContent className="space-y-4">
               {reviews.map((review) => (
@@ -226,12 +224,6 @@ export function Achievements() {
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          <div className="text-center mt-6">
-            <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
-              4/8 học viên
-            </p>
           </div>
         </CardContent>
       </Card>

@@ -40,7 +40,7 @@ export function Profile() {
                     <span className="text-sm text-gray-600 dark:text-gray-400">Tham gia tháng 3, 2025</span>
                   </div>
                   <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                    <Clock className="h-4 w-4" />
+                    <Clock className="h-4 w-4 dark:text-blue-400" />
                     <span>124 giờ học</span>
                   </div>
                 </div>
@@ -108,10 +108,9 @@ export function Profile() {
           <CardContent className="p-4 space-y-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs text-gray-500">Hoạt động gần đây</p>
-                <h2 className="text-lg font-semibold text-gray-900">Xem nhanh khóa đang học</h2>
+                <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Xem nhanh khóa đang học</h2>
               </div>
-              <Button variant="ghost" className="text-[#254a91]">Xem tất cả</Button>
+              <Button variant="ghost" className="text-[#254a91] dark:text-blue-400">Xem tất cả</Button>
             </div>
 
             {ongoingCourses.slice(0, 1).map((course) => (
@@ -161,7 +160,7 @@ export function Profile() {
                       <p className="font-semibold text-gray-900">{assignment.title}</p>
                       <p className="text-xs text-gray-500">{course?.title}</p>
                     </div>
-                    <Badge variant="outline" className="text-xs">{assignment.type}</Badge>
+                    <Badge variant="outline" className="text-xs dark:text-gray-500">{assignment.type}</Badge>
                   </div>
                   <p className="text-xs text-gray-500 mt-2">Hạn: {new Date(assignment.deadline).toLocaleDateString('vi-VN')}</p>
                 </div>
@@ -176,10 +175,9 @@ export function Profile() {
         <CardContent className="p-4 space-y-4">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-xs text-gray-500">Chứng nhận của tôi</p>
-              <h2 className="text-lg font-semibold text-gray-900">Chứng nhận của tôi</h2>
+              <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Chứng nhận của tôi</h2>
             </div>
-            <Button variant="ghost" className="text-[#254a91]" onClick={() => navigate('/achievements')}>
+            <Button variant="ghost" className="text-[#254a91] dark:text-blue-400" onClick={() => navigate('/achievements')}>
               Xem tất cả
             </Button>
           </div>
@@ -189,7 +187,7 @@ export function Profile() {
               <div className="bg-gradient-to-r from-[#6d7bff] to-[#7fe1ff] p-5 text-white">
                 <p className="text-xs">CHỨNG CHỈ HOÀN THÀNH</p>
                 <h3 className="text-lg font-semibold">Frodeuxs User Experience</h3>
-                <p className="text-xs mt-4">Cấp cho: Trương Quang Minh</p>
+                <p className="text-xs mt-4">Cấp cho: Nguyễn Văn A</p>
                 <p className="text-xs">Ngày hoàn thành: 25/12/2025</p>
               </div>
               <div className="flex items-center gap-3 p-3 bg-white">
@@ -197,7 +195,7 @@ export function Profile() {
                 <Button size="sm" variant="outline" className="flex-1">Chia sẻ</Button>
               </div>
             </div>
-            {completedCourses.slice(0, 1).map((course) => (
+            {/* {completedCourses.slice(0, 1).map((course) => (
               <Card key={course.id} className="border border-[#e5edff]">
                 <CardContent className="p-4 space-y-2">
                   <p className="text-xs text-gray-500">Chứng chỉ khóa học</p>
@@ -209,7 +207,7 @@ export function Profile() {
                   </div>
                 </CardContent>
               </Card>
-            ))}
+            ))} */}
           </div>
         </CardContent>
       </Card>

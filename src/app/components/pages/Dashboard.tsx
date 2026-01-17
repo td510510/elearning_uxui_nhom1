@@ -51,23 +51,23 @@ export function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card className="border-0 shadow-sm">
             <CardContent className="pt-6 text-center">
-              <TrendingUp className="h-12 w-12 mx-auto mb-3 text-[#254a91]" />
-              <p className="text-4xl font-bold text-[#254a91] mb-2">10,000+</p>
-              <p className="text-gray-600">Khóa học chất lượng</p>
+              <TrendingUp className="h-12 w-12 mx-auto mb-3 text-[#254a91] dark:text-blue-400" />
+              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">10,000+</p>
+              <p className="text-gray-600 dark:text-white">Khóa học chất lượng</p>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-sm">
             <CardContent className="pt-6 text-center">
-              <Users className="h-12 w-12 mx-auto mb-3 text-[#254a91]" />
-              <p className="text-4xl font-bold text-[#254a91] mb-2">500,000+</p>
-              <p className="text-gray-600">Học viên đã tin tưởng</p>
+              <Users className="h-12 w-12 mx-auto mb-3 text-[#254a91] dark:text-blue-400" />
+              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">500,000+</p>
+              <p className="text-gray-600 dark:text-white">Học viên đã tin tưởng</p>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-sm">
             <CardContent className="pt-6 text-center">
-              <Star className="h-12 w-12 mx-auto mb-3 text-[#254a91]" />
-              <p className="text-4xl font-bold text-[#254a91] mb-2">4.8/5</p>
-              <p className="text-gray-600">Đánh giá trung bình</p>
+              <Star className="h-12 w-12 mx-auto mb-3 text-[#254a91] dark:text-blue-400" />
+              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">4.8/5</p>
+              <p className="text-gray-600 dark:text-white">Đánh giá trung bình</p>
             </CardContent>
           </Card>
         </div>
@@ -77,8 +77,8 @@ export function Dashboard() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <CardTitle className="text-[#254a91] text-2xl">Khóa học phổ biến</CardTitle>
-                <p className="text-gray-500 mt-1">Khám phá các khóa học được yêu thích nhất</p>
+                <CardTitle className="text-[#254a91] dark:text-blue-400 text-2xl">Khóa học phổ biến</CardTitle>
+                <p className="text-gray-500 dark:text-white mt-1">Khám phá các khóa học được yêu thích nhất</p>
               </div>
               <Button variant="outline" onClick={() => navigate('/explore')}>
                 Xem tất cả
@@ -142,11 +142,6 @@ export function Dashboard() {
   // Authenticated user dashboard
   return (
     <div className="space-y-6">
-      {/* Page Title */}
-      <div>
-        <p className="text-sm text-gray-500 dark:text-white">Tiến độ tổng quan</p>
-      </div>
-
       {/* Progress and Stats Row */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {/* Progress Card */}
@@ -175,7 +170,6 @@ export function Dashboard() {
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-500 dark:text-white">Tiếp tục học</p>
                 <CardTitle className="text-[#254a91] dark:text-blue-400">Khóa học của tôi</CardTitle>
               </div>
               <div className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
@@ -237,7 +231,6 @@ export function Dashboard() {
         <Card className="border-0 shadow-sm">
           <CardHeader>
             <CardTitle className="text-[#254a91] dark:text-white">Lịch học</CardTitle>
-            <p className="text-sm text-gray-500 dark:text-white">Nhiệm vụ sắp tới</p>
           </CardHeader>
           <CardContent className="space-y-3">
             {upcomingAssignments.map((assignment, index) => {
@@ -255,7 +248,7 @@ export function Dashboard() {
                     </div>
                     <Badge
                       variant="outline"
-                      className="text-xs ml-2"
+                      className="text-xs ml-2 dark:text-gray-500"
                     >
                       {assignment.type}
                     </Badge>
