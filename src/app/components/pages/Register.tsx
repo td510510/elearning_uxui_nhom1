@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '@/app/context/AuthContext';
-import { Mail, Lock, User as UserIcon, BookOpen, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { Mail, Lock, User as UserIcon, AlertCircle, CheckCircle2 } from 'lucide-react';
+import { OwlLogo } from '@/app/components/ui/OwlLogo';
 import { Button } from '@/app/components/ui/button';
 import { Input } from '@/app/components/ui/input';
 import { Label } from '@/app/components/ui/label';
@@ -91,9 +92,7 @@ export function Register() {
         {/* Logo */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-3 mb-4">
-            <div className="w-16 h-16 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-              <BookOpen className="h-9 w-9 text-[#254a91]" />
-            </div>
+            <OwlLogo className="h-9 w-9 text-white" />
           </div>
           <h1 className="text-4xl font-bold text-white mb-2">StudyClub</h1>
           <p className="text-blue-100">Bắt đầu hành trình học tập của bạn</p>
