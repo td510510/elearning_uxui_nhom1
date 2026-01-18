@@ -33,7 +33,7 @@ export function LearningPage() {
       {/* Sidebar - Lesson List */}
       <div className="w-80 flex-shrink-0">
         <Card className="h-full bg-white">
-          <CardContent className="p-4 space-y-4">
+          <CardContent className="p-4 space-y-4 overflow-y-auto">
             <button className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#254a91]">
               <ArrowLeft className="h-4 w-4" />
               Quay lại khóa học
@@ -84,7 +84,7 @@ export function LearningPage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 space-y-6">
+      <div className="flex-1 space-y-6 overflow-y-auto">
         {/* Video Player */}
         <Card className="border-0 shadow-sm">
           <CardContent className="p-0">
