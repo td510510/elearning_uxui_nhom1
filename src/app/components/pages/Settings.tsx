@@ -15,7 +15,7 @@ export function Settings() {
     { id: 'account', label: 'Tài khoản', icon: User },
     { id: 'communication', label: 'Tùy chọn giao tiếp', icon: Bell },
     { id: 'notes', label: 'Ghi chú & Điểm nổi bật', icon: FileText },
-    { id: 'calendar', label: 'Đóng bộ lịch', icon: Calendar },
+    { id: 'calendar', label: 'Đồng bộ lịch', icon: Calendar },
   ];
   return (
     <div className="space-y-6">
