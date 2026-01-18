@@ -12,10 +12,9 @@ import {
   Bell,
   Moon,
   Sun,
-  Wallet,
-  ShieldCheck,
   ShoppingCart,
 } from 'lucide-react';
+import { OwlLogo } from '@/app/components/ui/OwlLogo';
 import { useTheme } from '@/app/context/ThemeContext';
 import { useAuth } from '@/app/context/AuthContext';
 import { Avatar, AvatarFallback, AvatarImage } from '@/app/components/ui/avatar';
@@ -72,9 +71,7 @@ export function Layout({ children }: LayoutProps) {
         <div className="h-16 flex items-center justify-between px-4 border-b border-gray-200 dark:border-gray-700">
           {!sidebarCollapsed && (
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-gradient-to-br from-[#254a91] to-[#4a7cc7] rounded-lg flex items-center justify-center border-2 border-[#254a91]/20 dark:border-blue-400/30 shadow-md">
-                <BookOpen className="h-6 w-6 text-white" />
-              </div>
+              <OwlLogo className="h-7 w-7 text-[#254a91] dark:text-blue-400" />
               <div>
                 <h1 className="text-xl font-bold text-[#254a91] dark:text-blue-400">StudyClub</h1>
                 <p className="text-xs text-gray-500 dark:text-gray-400">Học cùng nhau</p>
@@ -130,9 +127,7 @@ export function Layout({ children }: LayoutProps) {
               <Menu className="h-5 w-5" />
             </Button>
             {sidebarCollapsed && <div className="hidden md:flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-[#254a91] to-[#4a7cc7] rounded-lg flex items-center justify-center border-2 border-[#254a91]/20 dark:border-blue-400/30 shadow-md">
-                <BookOpen className="h-5 w-5 text-white" />
-              </div>
+              <OwlLogo className="h-7 w-7 text-[#254a91] dark:text-blue-400" />
               <span className="font-bold text-[#254a91] dark:text-blue-400">StudyClub</span>
             </div>}
           </div>
@@ -233,7 +228,7 @@ export function Layout({ children }: LayoutProps) {
                 <div className="flex flex-col md:flex-row md:items-center md:justify-between">
                   <div className="flex flex-col">
                     <div className="flex items-center gap-2 justify-center">
-                      <BookOpen className="h-8 w-8 text-[#254a91] dark:text-blue-400" />
+                      <OwlLogo className="h-7 w-7 text-[#254a91] dark:text-blue-400" />
                       <h2 className="text-lg font-bold text-[#254a91] dark:text-blue-400">StudyClub</h2>
                     </div>
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">Học học nữa, học mãi</p>
