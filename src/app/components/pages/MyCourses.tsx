@@ -231,7 +231,7 @@ export function MyCourses() {
                   <div className="flex items-center gap-3 text-sm text-gray-600 dark:text-gray-400 mb-4">
                     <div className="flex items-center gap-1">
                       <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                      <span>{course.rating}</span>
+                      <span>{course.rating.toString().replace('.', ',')}</span>
                     </div>
                     <div className="flex items-center gap-1">
                       <Clock className="h-4 w-4 dark:text-white" />

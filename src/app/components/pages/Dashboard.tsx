@@ -52,21 +52,21 @@ export function Dashboard() {
           <Card className="border-0 shadow-sm">
             <CardContent className="pt-6 text-center">
               <TrendingUp className="h-12 w-12 mx-auto mb-3 text-[#254a91] dark:text-blue-400" />
-              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">10,000+</p>
+              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">10.000+</p>
               <p className="text-gray-600 dark:text-white">Khóa học chất lượng</p>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-sm">
             <CardContent className="pt-6 text-center">
               <Users className="h-12 w-12 mx-auto mb-3 text-[#254a91] dark:text-blue-400" />
-              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">500,000+</p>
+              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">500.000+</p>
               <p className="text-gray-600 dark:text-white">Học viên đã tin tưởng</p>
             </CardContent>
           </Card>
           <Card className="border-0 shadow-sm">
             <CardContent className="pt-6 text-center">
               <Star className="h-12 w-12 mx-auto mb-3 text-[#254a91] dark:text-blue-400" />
-              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">4.8/5</p>
+              <p className="text-4xl font-bold text-[#254a91] mb-2 dark:text-blue-400">4,8/5</p>
               <p className="text-gray-600 dark:text-white">Đánh giá trung bình</p>
             </CardContent>
           </Card>
@@ -100,10 +100,10 @@ export function Dashboard() {
                   <div className="p-4">
                     <div className="flex items-center gap-2 text-sm text-gray-600 mb-2">
                       <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                      <span className="font-semibold">{course.rating}</span>
+                      <span className="font-semibold">{course.rating.toString().replace('.', ',')}</span>
                       <span className="text-gray-400">•</span>
                       <Users className="h-4 w-4" />
-                      <span>{(course.students / 1000).toFixed(1)}k học viên</span>
+                      <span>{course.students.toLocaleString('de-DE')} học viên</span>
                     </div>
                     <h3 className="font-semibold text-[#254a91] mb-2 line-clamp-2">{course.title}</h3>
                     <p className="text-sm text-gray-600 mb-3">{course.instructor}</p>
@@ -287,9 +287,9 @@ export function Dashboard() {
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-500 mb-2">
                   <Star className="h-4 w-4 text-yellow-500 fill-yellow-500" />
-                  <span>{course.rating}</span>
+                  <span>{course.rating.toString().replace('.', ',')}</span>
                   <Users className="h-4 w-4" />
-                  <span>{(course.students / 1000).toFixed(1)}k học viên</span>
+                  <span>{course.students.toLocaleString('de-DE')} học viên</span>
                 </div>
                 <h3 className="font-semibold text-[#254a91] mb-1">{course.title}</h3>
                 <p className="text-sm text-gray-600">{course.instructor}</p>

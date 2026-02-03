@@ -21,7 +21,7 @@ export function CourseDetail() {
       lessons: [
         { id: 1, title: 'Giới thiệu về Python', duration: '12:30', preview: true },
         { id: 2, title: 'Cài đặt môi trường', duration: '15:45', preview: true },
-        { id: 3, title: 'Hello World đầu tiên', duration: '8:20', preview: false },
+        { id: 3, title: 'Chương trình đầu tiên', duration: '8:20', preview: false },
       ],
     },
     {
@@ -35,11 +35,11 @@ export function CourseDetail() {
     },
     {
       id: 3,
-      title: 'Functions và Modules',
+      title: 'Hàm và Module',
       lessons: [
-        { id: 7, title: 'Functions cơ bản', duration: '25:40', preview: false },
-        { id: 8, title: 'Parameters và Arguments', duration: '19:20', preview: false },
-        { id: 9, title: 'Modules và Packages', duration: '21:15', preview: false },
+        { id: 7, title: 'Hàm cơ bản', duration: '25:40', preview: false },
+        { id: 8, title: 'Tham số và Đối số', duration: '19:20', preview: false },
+        { id: 9, title: 'Module và Package', duration: '21:15', preview: false },
       ],
     },
   ];
@@ -70,12 +70,12 @@ export function CourseDetail() {
             <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400">
               <div className="flex items-center gap-1">
                 <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                <span className="font-semibold">{course.rating}</span>
-                <span>(2,450 đánh giá)</span>
+                <span className="font-semibold">{course.rating.toString().replace('.', ',')}</span>
+                <span>(2.450 đánh giá)</span>
               </div>
               <div className="flex items-center gap-1">
                 <Users className="h-4 w-4" />
-                <span>{course.students.toLocaleString()} học viên</span>
+                <span>{course.students.toLocaleString('de-DE')} học viên</span>
               </div>
               <div className="flex items-center gap-1">
                 <Clock className="h-4 w-4" />
@@ -107,7 +107,7 @@ export function CourseDetail() {
                   'Xử lý và phân tích dữ liệu',
                   'Làm việc với Pandas và NumPy',
                   'Trực quan hóa dữ liệu',
-                  'Machine Learning cơ bản',
+                  'Học Máy cơ bản',
                   'Xây dựng dự án thực tế',
                 ].map((item, index) => (
                   <div key={index} className="flex items-start gap-2">
@@ -205,11 +205,11 @@ export function CourseDetail() {
                     {course.instructor}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
-                    Data Scientist & AI Researcher
+                    Chuyên gia Khoa học Dữ liệu & Trí tuệ Nhân tạo
                   </p>
                   <p className="text-sm text-gray-700 dark:text-gray-300 mt-3">
                     Với hơn 10 năm kinh nghiệm trong lĩnh vực khoa học dữ liệu và AI, tôi đã
-                    giảng dạy cho hơn 50,000 học viên trên toàn thế giới.
+                    giảng dạy cho hơn 50.000 học viên trên toàn thế giới.
                   </p>
                 </div>
               </div>

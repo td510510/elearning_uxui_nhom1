@@ -23,7 +23,7 @@ export function Profile() {
         <CardContent className="p-6">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Nguyễn Văn A</h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Nguyễn Văn An</h1>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-start gap-6">
               <div className="flex items-center gap-4 flex-1">
@@ -135,8 +135,8 @@ export function Profile() {
               <p className="text-sm font-semibold text-gray-900">Bài học vừa xem</p>
               <div className="mt-3 flex items-center justify-between p-3 rounded-lg border border-[#e5edff] bg-[#f8faff]">
                 <div>
-                  <p className="font-semibold text-gray-900">Bài 35: User Research Methods</p>
-                  <p className="text-xs text-gray-500">UI/UX Design • 2 ngày trước</p>
+                  <p className="font-semibold text-gray-900">Bài 35: Phương pháp Nghiên cứu Người dùng</p>
+                  <p className="text-xs text-gray-500">Thiết kế UI/UX • 2 ngày trước</p>
                 </div>
                 <span className="text-sm text-gray-700">15:20</span>
               </div>
@@ -185,8 +185,8 @@ export function Profile() {
             <div className="rounded-xl overflow-hidden border border-[#e5edff] shadow-sm">
               <div className="bg-gradient-to-r from-[#6d7bff] to-[#7fe1ff] p-5 text-white">
                 <p className="text-xs">CHỨNG CHỈ HOÀN THÀNH</p>
-                <h3 className="text-lg font-semibold">Frodeuxs User Experience</h3>
-                <p className="text-xs mt-4">Cấp cho: Nguyễn Văn A</p>
+                <h3 className="text-lg font-semibold">Trải nghiệm Người dùng Chuyên sâu</h3>
+                <p className="text-xs mt-4">Cấp cho: Nguyễn Văn An</p>
                 <p className="text-xs">Ngày hoàn thành: 25/12/2025</p>
               </div>
               <div className="flex items-center gap-3 p-3 bg-white">

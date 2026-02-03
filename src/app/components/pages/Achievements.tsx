@@ -1,24 +1,18 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Award, Download, Share2, ExternalLink, ArrowRight, Star, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Card, CardContent, CardHeader } from '@/app/components/ui/card';
 import { Button } from '@/app/components/ui/button';
-import { Badge } from '@/app/components/ui/badge';
-import { mockCourses, mockCertificates } from '@/app/data/mockData';
+import { mockCourses } from '@/app/data/mockData';
 
 export function Achievements() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 3;
-  const completedCourses = mockCourses.filter((c: any) => c.status === 'completed');
 
   // Create more achievement items by duplicating completed courses
   const allAchievements = [
-    ...completedCourses,
-    ...completedCourses.map((c: any, i: number) => ({ ...c, id: `${c.id}-copy1-${i}` })),
-    ...completedCourses.map((c: any, i: number) => ({ ...c, id: `${c.id}-copy2-${i}` })),
-    ...completedCourses.map((c: any, i: number) => ({ ...c, id: `${c.id}-copy3-${i}` })),
-    ...completedCourses.map((c: any, i: number) => ({ ...c, id: `${c.id}-copy4-${i}` })),
+    ...mockCourses,
   ];
 
   const totalPages = Math.ceil(allAchievements.length / itemsPerPage);
@@ -28,26 +22,26 @@ export function Achievements() {
   const reviews = [
     {
       id: 1,
-      course: 'React Fundamentals',
-      author: 'Nguyễn Văn A',
+      course: 'Cơ bản về React',
+      author: 'Nguyễn Văn An',
       rating: 5,
-      comment: '"Khóa học rất bổ ích và dễ hiểu!"',
+      comment: '"Giảng viên giải thích rõ ràng, dễ theo dõi!"',
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jack'
     },
     {
       id: 2,
-      course: 'Advanced JavaScript',
-      author: 'Nguyễn Văn A',
+      course: 'JavaScript Nâng cao',
+      author: 'Trần Thị Bình',
       rating: 5,
-      comment: '"Khóa học rất bổ ích và dễ hiểu!"',
+      comment: '"Nội dung chuyên sâu, rất hữu ích cho công việc!"',
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jack2'
     },
     {
       id: 3,
-      course: 'Python for Beginners',
-      author: 'Nguyễn Văn A',
+      course: 'Python Cho Người Mới Bắt Đầu',
+      author: 'Lê Minh Châu',
       rating: 5,
-      comment: '"Khóa học rất bổ ích và dễ hiểu!"',
+      comment: '"Bài tập thực hành nhiều, giúp nắm vững kiến thức!"',
       avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Jack3'
     }
   ];

@@ -1,49 +1,79 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { CheckCircle2, CreditCard, Smartphone, QrCode, ArrowLeft, Copy, Check } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
+import { CheckCircle2, CreditCard, Smartphone, QrCode, ArrowLeft, Copy, Check, Calendar, Lock } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/app/components/ui/card';
 import { RadioGroup, RadioGroupItem } from '@/app/components/ui/radio-group';
 import { Label } from '@/app/components/ui/label';
 import { Separator } from '@/app/components/ui/separator';
 import { Alert, AlertDescription } from '@/app/components/ui/alert';
+import { Input } from '@/app/components/ui/input';
 
 export function Order() {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const [paymentMethod, setPaymentMethod] = useState('momo');
   const [orderPlaced, setOrderPlaced] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [cardData, setCardData] = useState({
+    cardNumber: '',
+    cardHolder: '',
+    expiryDate: '',
+    cvv: ''
+  });
+  const [bankData, setBankData] = useState({
+    accountNumber: '',
+    accountHolder: '',
+    bankName: ''
+  });
+
+  // Check URL params for success indicator
+  useEffect(() => {
+    const success = searchParams.get('success');
+    if (success === 'true') {
+      setOrderPlaced(true);
+      // Simulate order processing and redirect
+      setTimeout(() => {
+        navigate('/my-courses');
+      }, 3000);
+    }
+  }, [searchParams, navigate]);
 
   // Sample order data
   const orderItems = [
     {
       id: 1,
-      title: 'React & TypeScript - The Complete Guide',
+      title: 'React và TypeScript - Hướng dẫn Toàn diện',
       price: 499000,
+      originalPrice: 1999000,
       quantity: 1,
     },
     {
       id: 2,
-      title: 'Advanced JavaScript Patterns',
+      title: 'JavaScript Nâng cao - Các Mẫu Thiết kế',
       price: 399000,
+      originalPrice: 1499000,
       quantity: 1,
     },
     {
       id: 3,
-      title: 'UI/UX Design Masterclass',
+      title: 'Thiết kế UI/UX Chuyên nghiệp',
       price: 599000,
+      originalPrice: 2499000,
       quantity: 1,
     },
   ];
 
+  const originalTotal = orderItems.reduce(
+    (sum, item) => sum + (item.originalPrice || item.price) * item.quantity,
+    0
+  );
   const subtotal = orderItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const discount = originalTotal - subtotal;
   const total = subtotal;
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(amount);
+    return amount.toLocaleString('de-DE') + ' đ';
   };
 
   const handleCopyCode = () => {
@@ -57,7 +87,7 @@ export function Order() {
     // Simulate order processing
     setTimeout(() => {
       navigate('/my-courses');
-    }, 3000);
+    }, 5000);
   };
 
   if (orderPlaced) {
@@ -232,11 +262,93 @@ export function Order() {
           {paymentMethod === 'card' && (
             <Card>
               <CardHeader>
-                <CardTitle>Thông tin thẻ</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <CreditCard className="h-5 w-5 text-blue-600" />
+                  Thông tin thẻ tín dụng/Ghi nợ
+                </CardTitle>
+                <CardDescription>Nhập thông tin thẻ của bạn để thanh toán</CardDescription>
               </CardHeader>
-              <CardContent className="text-center py-8">
-                <CreditCard className="h-16 w-16 mx-auto text-gray-400 mb-4" />
-                <p className="text-gray-500">Tính năng thanh toán thẻ đang được phát triển</p>
+              <CardContent className="space-y-4">
+                <div>
+                  <Label className="text-sm font-semibold mb-2 block">Số thẻ</Label>
+                  <Input
+                    placeholder="1234 5678 9012 3456"
+                    maxLength={19}
+                    value={cardData.cardNumber}
+                    onChange={(e) => {
+                      let value = e.target.value.replace(/\s+/g, '').replace(/[^\d]/gi, '');
+                      value = value.replace(/(.{4})/g, '$1 ').trim();
+                      setCardData({ ...cardData, cardNumber: value });
+                    }}
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-sm font-semibold mb-2 block">Tên chủ thẻ</Label>
+                  <Input
+                    placeholder="NGUYEN VAN A"
+                    value={cardData.cardHolder}
+                    onChange={(e) => setCardData({ ...cardData, cardHolder: e.target.value })}
+                  />
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label className="text-sm font-semibold mb-2 block">Hạn sử dụng</Label>
+                    <div className="flex items-center gap-1">
+                      <Input
+                        placeholder="MM"
+                        maxLength={2}
+                        className="flex-1"
+                        value={cardData.expiryDate.split('/')[0] || ''}
+                        onChange={(e) => {
+                          const month = e.target.value;
+                          const year = cardData.expiryDate.split('/')[1] || '';
+                          setCardData({ ...cardData, expiryDate: `${month}/${year}` });
+                        }}
+                      />
+                      <span className="text-gray-500">/</span>
+                      <Input
+                        placeholder="YY"
+                        maxLength={2}
+                        className="flex-1"
+                        value={cardData.expiryDate.split('/')[1] || ''}
+                        onChange={(e) => {
+                          const month = cardData.expiryDate.split('/')[0] || '';
+                          const year = e.target.value;
+                          setCardData({ ...cardData, expiryDate: `${month}/${year}` });
+                        }}
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <Label className="text-sm font-semibold mb-2 block">CVV</Label>
+                    <Input
+                      placeholder="123"
+                      maxLength={3}
+                      type="password"
+                      value={cardData.cvv}
+                      onChange={(e) => setCardData({ ...cardData, cvv: e.target.value })}
+                    />
+                  </div>
+                </div>
+
+                <Alert>
+                  <Lock className="h-4 w-4" />
+                  <AlertDescription>
+                    Thông tin thẻ của bạn được bảo mật bằng mã hóa SSL 256-bit
+                  </AlertDescription>
+                </Alert>
+
+                <Button
+                  className="w-full"
+                  size="lg"
+                  onClick={handlePlaceOrder}
+                  disabled={!cardData.cardNumber || !cardData.cardHolder || !cardData.expiryDate || !cardData.cvv}
+                >
+                  Thanh toán {formatCurrency(total)}
+                </Button>
               </CardContent>
             </Card>
           )}
@@ -244,11 +356,91 @@ export function Order() {
           {paymentMethod === 'bank' && (
             <Card>
               <CardHeader>
-                <CardTitle>Chuyển khoản ngân hàng</CardTitle>
+                <CardTitle className="flex items-center gap-2">
+                  <QrCode className="h-5 w-5 text-green-600" />
+                  Chuyển khoản ngân hàng
+                </CardTitle>
+                <CardDescription>Chuyển tiền vào tài khoản ngân hàng dưới đây</CardDescription>
               </CardHeader>
-              <CardContent className="text-center py-8">
-                <QrCode className="h-16 w-16 mx-auto text-gray-400 mb-4" />
-                <p className="text-gray-500">Tính năng chuyển khoản ngân hàng đang được phát triển</p>
+              <CardContent className="space-y-4">
+                <Alert>
+                  <AlertDescription>
+                    Vui lòng sử dụng <strong>Nội dung chuyển khoản</strong> là: <strong>STUDYCLUB{new Date().getTime()}</strong> để hệ thống tự động xác nhận
+                  </AlertDescription>
+                </Alert>
+
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20 p-6 rounded-lg space-y-4 border border-green-200 dark:border-green-800">
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Ngân hàng</p>
+                    <p className="text-lg font-semibold text-gray-900 dark:text-white">Ngân hàng Techcombank</p>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Chủ tài khoản</p>
+                    <p className="text-lg font-semibold text-gray-900 dark:text-white">StudyClub Vietnam</p>
+                  </div>
+
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Số tài khoản</p>
+                    <div className="flex items-center justify-between">
+                      <p className="text-lg font-mono font-semibold text-gray-900 dark:text-white">12345678901234</p>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-8 w-8"
+                        onClick={() => {
+                          navigator.clipboard.writeText('12345678901234');
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }}
+                      >
+                        {copied ? (
+                          <Check className="h-4 w-4 text-green-600" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Số tiền</p>
+                    <p className="text-xl font-semibold text-green-600">{formatCurrency(total)}</p>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Nội dung chuyển khoản</p>
+                    <div className="flex items-center gap-2">
+                      <p className="text-sm font-mono font-semibold text-gray-900 dark:text-white break-all">STUDYCLUB{new Date().getTime()}</p>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-6 w-6"
+                        onClick={() => {
+                          navigator.clipboard.writeText(`STUDYCLUB${new Date().getTime()}`);
+                          setCopied(true);
+                          setTimeout(() => setCopied(false), 2000);
+                        }}
+                      >
+                        {copied ? (
+                          <Check className="h-4 w-4 text-green-600" />
+                        ) : (
+                          <Copy className="h-4 w-4" />
+                        )}
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-xs text-center text-gray-500">
+                  * Đơn hàng sẽ được kích hoạt trong vòng 24 giờ sau khi chúng tôi xác nhận thanh toán
+                </p>
               </CardContent>
             </Card>
           )}
@@ -270,9 +462,21 @@ export function Order() {
                       <p className="font-medium line-clamp-2">{item.title}</p>
                       <p className="text-gray-500 text-xs">x{item.quantity}</p>
                     </div>
-                    <span className="font-semibold whitespace-nowrap">
-                      {formatCurrency(item.price)}
-                    </span>
+                    <div className="flex items-center gap-2 whitespace-nowrap">
+                      <span className="font-semibold">
+                        {formatCurrency(item.price)}
+                      </span>
+                      {item.originalPrice && item.originalPrice !== item.price && (
+                        <div className="flex items-center gap-1">
+                          <span className="text-xs text-gray-500 line-through">
+                            {formatCurrency(item.originalPrice)}
+                          </span>
+                          <span className="text-xs font-semibold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">
+                            -{Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}%
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 ))}
               </div>
@@ -280,6 +484,20 @@ export function Order() {
               <Separator />
 
               <div className="space-y-2">
+                {discount > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-400">Tổng giá gốc:</span>
+                    <span className="font-medium">{formatCurrency(originalTotal)}</span>
+                  </div>
+                )}
+                {discount > 0 && (
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-400">Giảm giá:</span>
+                    <span className="font-medium text-green-600">
+                      -{formatCurrency(discount)}
+                    </span>
+                  </div>
+                )}
                 <div className="flex justify-between text-sm">
                   <span className="text-gray-600 dark:text-gray-400">Tạm tính:</span>
                   <span className="font-medium">{formatCurrency(subtotal)}</span>
@@ -294,17 +512,6 @@ export function Order() {
                   {formatCurrency(total)}
                 </span>
               </div>
-
-              {paymentMethod === 'momo' && (
-                <Button
-                  className="w-full"
-                  size="lg"
-                  onClick={handlePlaceOrder}
-                >
-                  Tôi đã thanh toán
-                  <CheckCircle2 className="ml-2 h-5 w-5" />
-                </Button>
-              )}
 
               <p className="text-xs text-center text-gray-500 dark:text-gray-400">
                 Bằng việc tiếp tục, bạn đồng ý với{' '}

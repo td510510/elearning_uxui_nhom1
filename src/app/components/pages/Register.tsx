@@ -122,7 +122,7 @@ export function Register() {
                   <Input
                     id="name"
                     type="text"
-                    placeholder="Nguyễn Văn A"
+                    placeholder="Nguyễn Văn An"
                     value={formData.name}
                     onChange={handleChange}
                     className="pl-10"
