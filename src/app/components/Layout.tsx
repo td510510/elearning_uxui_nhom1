@@ -10,6 +10,7 @@ import {
   Menu,
   Search,
   Bell,
+  Heart,
   Moon,
   Sun,
   ShoppingCart,
@@ -40,6 +41,45 @@ export function Layout({ children }: LayoutProps) {
   const navigate = useNavigate();
   const location = useLocation();
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  const notifications = [
+    {
+      id: 'n1',
+      title: 'Khóa học mới đã được thêm',
+      time: '2 phút trước',
+      unread: true,
+    },
+    {
+      id: 'n2',
+      title: 'Giảm giá 40% cho UI/UX',
+      time: '1 giờ trước',
+      unread: true,
+    },
+    {
+      id: 'n3',
+      title: 'Hoàn thành bài kiểm tra tuần',
+      time: 'Hôm qua',
+      unread: false,
+    },
+  ];
+
+  const favoriteCourses = [
+    {
+      id: 'f1',
+      title: 'React & TypeScript - Toàn diện',
+      progress: '35% hoàn thành',
+    },
+    {
+      id: 'f2',
+      title: 'UI/UX Pro - Thiết kế hệ thống',
+      progress: 'Bắt đầu học',
+    },
+    {
+      id: 'f3',
+      title: 'JavaScript Nâng cao',
+      progress: '12 bài đã lưu',
+    },
+  ];
 
   const allMenuItems = [
     { id: 'dashboard', path: '/dashboard', icon: Home, label: 'Trang chủ', public: true },
@@ -154,10 +194,59 @@ export function Layout({ children }: LayoutProps) {
             </Button>
             {isAuthenticated && (
               <>
-                <Button variant="ghost" size="icon" className="relative">
-                  <Bell className="h-5 w-5" />
-                  <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
-                </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <Button variant="ghost" size="icon" className="relative">
+                      <Bell className="h-5 w-5" />
+                      <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full" />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" sideOffset={8} className="w-80 rounded-xl shadow-lg z-50 bg-white border border-gray-200 p-2">
+                    <DropdownMenuLabel className="text-sm text-gray-700">Thông báo</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <div className="max-h-72 overflow-auto">
+                      {notifications.map((item) => (
+                        <DropdownMenuItem key={item.id} className="flex flex-col items-start gap-1 rounded-lg py-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-semibold text-gray-900">{item.title}</span>
+                            {item.unread && <span className="h-2 w-2 rounded-full bg-[#254a91]" />}
+                          </div>
+                          <span className="text-xs text-gray-500">{item.time}</span>
+                        </DropdownMenuItem>
+                      ))}
+                    </div>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigate('/dashboard')} className="text-sm text-[#254a91] rounded-md hover:bg-gray-100">
+                      Xem tất cả thông báo
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+                <DropdownMenu>
+                  <DropdownMenuTrigger>
+                    <Button variant="ghost" size="icon" className="relative">
+                      <Heart className="h-5 w-5" />
+                      <span className="absolute -top-1 -right-1 h-5 w-5 bg-pink-500 text-white text-xs rounded-full flex items-center justify-center font-semibold">
+                        {favoriteCourses.length}
+                      </span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end" sideOffset={8} className="w-80 rounded-xl shadow-lg z-50 bg-white border border-gray-200 p-2">
+                    <DropdownMenuLabel className="text-sm text-gray-700">Yêu thích</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+                    <div className="max-h-72 overflow-auto">
+                      {favoriteCourses.map((item) => (
+                        <DropdownMenuItem key={item.id} className="flex flex-col items-start gap-1 rounded-lg py-2">
+                          <span className="text-sm font-semibold text-gray-900">{item.title}</span>
+                          <span className="text-xs text-gray-500">{item.progress}</span>
+                        </DropdownMenuItem>
+                      ))}
+                    </div>
+                    <DropdownMenuSeparator />
+                    <DropdownMenuItem onClick={() => navigate('/my-courses')} className="text-sm text-[#254a91] rounded-md hover:bg-gray-100">
+                      Xem danh sách yêu thích
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 <Button
                   variant="ghost"
                   size="icon"
