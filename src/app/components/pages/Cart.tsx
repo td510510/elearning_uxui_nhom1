@@ -20,8 +20,8 @@ export function Cart() {
   const [cartItems, setCartItems] = useState<CartItem[]>([
     {
       id: 1,
-      title: 'React & TypeScript - The Complete Guide',
-      instructor: 'Nguyễn Văn A',
+      title: 'React & TypeScript - Hướng dẫn Toàn diện',
+      instructor: 'Nguyễn Văn An',
       price: 499000,
       originalPrice: 1999000,
       image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400',
@@ -29,8 +29,8 @@ export function Cart() {
     },
     {
       id: 2,
-      title: 'Advanced JavaScript Patterns',
-      instructor: 'Trần Thị B',
+      title: 'JavaScript Nâng cao - Design Patterns',
+      instructor: 'Trần Thị Bình',
       price: 399000,
       originalPrice: 1499000,
       image: 'https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=400',
@@ -38,8 +38,8 @@ export function Cart() {
     },
     {
       id: 3,
-      title: 'UI/UX Design Masterclass',
-      instructor: 'Lê Văn C',
+      title: 'Thiết kế UI/UX Chuyên nghiệp',
+      instructor: 'Lê Minh Châu',
       price: 599000,
       originalPrice: 2499000,
       image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400',
@@ -61,18 +61,16 @@ export function Cart() {
     setCartItems(items => items.filter(item => item.id !== id));
   };
 
-  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
-  const discount = cartItems.reduce(
-    (sum, item) => sum + ((item.originalPrice || item.price) - item.price) * item.quantity,
+  const originalTotal = cartItems.reduce(
+    (sum, item) => sum + (item.originalPrice || item.price) * item.quantity,
     0
   );
+  const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+  const discount = originalTotal - subtotal;
   const total = subtotal;
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('vi-VN', {
-      style: 'currency',
-      currency: 'VND',
-    }).format(amount);
+    return amount.toLocaleString('de-DE') + ' đ';
   };
 
   return (
@@ -132,45 +130,29 @@ export function Cart() {
                           {formatCurrency(item.price)}
                         </span>
                         {item.originalPrice && (
-                          <span className="text-sm text-gray-500 line-through">
-                            {formatCurrency(item.originalPrice)}
-                          </span>
+                          <div className="flex items-center gap-1">
+                            <span className="text-sm text-gray-500 line-through">
+                              {formatCurrency(item.originalPrice)}
+                            </span>
+                            <span className="text-sm font-semibold text-red-600 bg-red-50 px-1.5 py-0.5 rounded">
+                              -{Math.round(((item.originalPrice - item.price) / item.originalPrice) * 100)}%
+                            </span>
+                          </div>
                         )}
                       </div>
 
-                      {/* Quantity Controls */}
-                      <div className="flex items-center gap-4">
-                        <div className="flex items-center gap-2 border rounded-lg p-1">
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8"
-                            onClick={() => updateQuantity(item.id, -1)}
-                            disabled={item.quantity <= 1}
-                          >
-                            <Minus className="h-4 w-4" />
-                          </Button>
-                          <span className="w-8 text-center font-medium">{item.quantity}</span>
-                          <Button
-                            variant="ghost"
-                            size="icon"
-                            className="h-8 w-8"
-                            onClick={() => updateQuantity(item.id, 1)}
-                          >
-                            <Plus className="h-4 w-4" />
-                          </Button>
-                        </div>
-
-                        <Button
-                          variant="ghost"
-                          size="sm"
-                          onClick={() => removeItem(item.id)}
-                          className="text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
-                        >
-                          <Trash2 className="h-4 w-4 mr-2" />
-                          Xóa
-                        </Button>
-                      </div>
+                    </div>
+                    {/* Quantity Controls */}
+                    <div className="flex gap-4">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => removeItem(item.id)}
+                        className="text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-950"
+                      >
+                        <Trash2 className="h-4 w-4 mr-2" />
+                        Xóa
+                      </Button>
                     </div>
                   </div>
                 </CardContent>
@@ -187,10 +169,12 @@ export function Cart() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-gray-600 dark:text-gray-400">Tạm tính:</span>
-                    <span className="font-medium">{formatCurrency(subtotal)}</span>
-                  </div>
+                  {discount > 0 && (
+                    <div className="flex justify-between text-sm">
+                      <span className="text-gray-600 dark:text-gray-400">Tổng giá gốc:</span>
+                      <span className="font-medium">{formatCurrency(originalTotal)}</span>
+                    </div>
+                  )}
                   {discount > 0 && (
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600 dark:text-gray-400">Giảm giá:</span>
@@ -199,6 +183,10 @@ export function Cart() {
                       </span>
                     </div>
                   )}
+                  <div className="flex justify-between text-sm">
+                    <span className="text-gray-600 dark:text-gray-400">Tạm tính:</span>
+                    <span className="font-medium">{formatCurrency(subtotal)}</span>
+                  </div>
                 </div>
 
                 <Separator />

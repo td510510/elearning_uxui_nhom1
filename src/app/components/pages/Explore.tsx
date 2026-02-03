@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Grid, List, Star, Clock, Users, Search, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Grid, List, Star, Clock, Users, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/app/components/ui/card';
-import { Input } from '@/app/components/ui/input';
 import { Badge } from '@/app/components/ui/badge';
 import { mockCourses } from '@/app/data/mockData';
 
@@ -40,8 +39,6 @@ export function Explore() {
     }
 
     return match;
-
-    return match;
   });
 
   const totalPages = Math.ceil(filteredCourses.length / coursesPerPage);
@@ -50,24 +47,6 @@ export function Explore() {
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div>
-        <h1 className="text-3xl font-bold text-[#254a91] dark:text-blue-400">Tìm thấy khóa học</h1>
-      </div>
-
-      {/* Search Bar */}
-      <Card className="border-0 shadow-sm rounded-xl">
-        <CardContent className="p-4">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-            <Input
-              placeholder="Tìm kiếm khóa học..."
-              className="pl-12 h-12 bg-[#eef3fb] border-0 rounded-full focus-visible:ring-2 focus-visible:ring-[#254a91]/50"
-            />
-          </div>
-        </CardContent>
-      </Card>
-
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
         {/* Sidebar Filters */}
         <div className="lg:col-span-1 space-y-4">
@@ -154,7 +133,7 @@ export function Explore() {
           {/* View Toggle */}
           <div className="flex items-center justify-between mb-6">
             <p className="text-sm text-gray-600 dark:text-gray-400">
-              Hiển thị {filteredCourses.length} khóa học
+              Hiển thị 6 khóa học
             </p>
             {/* View Toggle */}
             <div className="flex gap-1 bg-white rounded-lg border border-gray-200 p-1">
@@ -207,7 +186,7 @@ export function Explore() {
                       <div className="flex items-center gap-4 text-sm mb-4 text-gray-600">
                         <div className="flex items-center gap-1">
                           <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          <span className="dark:text-gray-400">{course.rating}</span>
+                          <span className="dark:text-gray-400">{course.rating.toString().replace('.', ',')}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-4 w-4 dark:text-gray-400" />
@@ -215,13 +194,13 @@ export function Explore() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Users className="h-4 w-4 dark:text-gray-400" />
-                          <span className="dark:text-gray-400">{course.students}</span>
+                          <span className="dark:text-gray-400">{course.students.toLocaleString('de-DE')}</span>
                         </div>
                       </div>
                       <div className="flex items-center justify-between pt-3 border-t border-gray-200">
                         <span className="text-lg font-bold text-[#254a91] dark:text-blue-400">
                           {course.price > 0
-                            ? `${course.price.toLocaleString('vi-VN')}đ`
+                            ? `${course.price.toLocaleString('de-DE')} đ`
                             : 'Miễn phí'}
                         </span>
                         <Button size="sm" className="bg-[#254a91] hover:bg-[#1e3a6f]">
@@ -267,7 +246,7 @@ export function Explore() {
                       <div className="flex items-center gap-6 text-sm text-gray-600 dark:text-gray-400 mb-3">
                         <div className="flex items-center gap-1">
                           <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                          <span>{course.rating}</span>
+                          <span>{course.rating.toString().replace('.', ',')}</span>
                         </div>
                         <div className="flex items-center gap-1">
                           <Clock className="h-4 w-4" />
@@ -275,7 +254,7 @@ export function Explore() {
                         </div>
                         <div className="flex items-center gap-1">
                           <Users className="h-4 w-4" />
-                          <span>{course.students}</span>
+                          <span>{course.students.toLocaleString('de-DE')}</span>
                         </div>
                       </div>
 
@@ -286,7 +265,7 @@ export function Explore() {
                       <div className="flex items-center justify-between">
                         <span className="text-lg font-bold text-[#254a91] dark:text-blue-400">
                           {course.price > 0
-                            ? `${course.price.toLocaleString('vi-VN')}đ`
+                            ? `${course.price.toLocaleString('de-DE')} đ`
                             : 'Miễn phí'}
                         </span>
                         <Button className="bg-[#254a91] hover:bg-[#1e3a6f]">

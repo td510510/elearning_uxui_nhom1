@@ -36,7 +36,7 @@ export const mockCourses: Course[] = [
   {
     id: '1',
     title: 'Python cho Khoa học Dữ liệu',
-    instructor: 'Dr. Nguyễn Văn A',
+    instructor: 'Dr. Nguyễn Văn An',
     progress: 65,
     rating: 4.8,
     totalHours: 24,
@@ -50,8 +50,8 @@ export const mockCourses: Course[] = [
   },
   {
     id: '2',
-    title: 'UI/UX Design Fundamentals',
-    instructor: 'Trần Thị B',
+    title: 'Thiết kế UI/UX - Kiến thức Nền tảng',
+    instructor: 'Trần Thị Bình',
     progress: 30,
     rating: 4.9,
     totalHours: 18,
@@ -65,8 +65,8 @@ export const mockCourses: Course[] = [
   },
   {
     id: '3',
-    title: 'React & TypeScript',
-    instructor: 'Lê Minh C',
+    title: 'React và TypeScript - Từ Cơ bản Đến Nâng cao',
+    instructor: 'Lê Minh Châu',
     progress: 85,
     rating: 4.7,
     totalHours: 32,
@@ -80,8 +80,8 @@ export const mockCourses: Course[] = [
   },
   {
     id: '4',
-    title: 'Digital Marketing Strategy',
-    instructor: 'Phạm Thu D',
+    title: 'Chiến lược Marketing Số',
+    instructor: 'Phạm Thu Dung',
     progress: 100,
     rating: 4.6,
     totalHours: 20,
@@ -95,8 +95,8 @@ export const mockCourses: Course[] = [
   },
   {
     id: '5',
-    title: 'Machine Learning A-Z',
-    instructor: 'Hoàng Minh E',
+    title: 'Học Máy Từ A Đến Z',
+    instructor: 'Hoàng Minh Đức',
     progress: 45,
     rating: 4.9,
     totalHours: 40,
@@ -110,8 +110,8 @@ export const mockCourses: Course[] = [
   },
   {
     id: '6',
-    title: 'Photoshop for Beginners',
-    instructor: 'Võ Thị F',
+    title: 'Photoshop Cho Người Mới Bắt Đầu',
+    instructor: 'Võ Thị Phương',
     progress: 20,
     rating: 4.5,
     totalHours: 15,
@@ -125,58 +125,58 @@ export const mockCourses: Course[] = [
   },
   {
     id: '7',
-    title: 'Photoshop for Beginners',
-    instructor: 'Võ Thị F',
-    progress: 20,
-    rating: 4.5,
-    totalHours: 15,
-    students: 7650,
-    level: 'Cơ bản',
-    price: 399000,
+    title: 'Figma Nâng Cao - Prototype Tương tác',
+    instructor: 'Nguyễn Thị Hương',
+    progress: 55,
+    rating: 4.8,
+    totalHours: 22,
+    students: 6340,
+    level: 'Nâng cao',
+    price: 549000,
     category: 'Thiết kế',
-    description: 'Học Photoshop từ đầu cho người mới bắt đầu',
-    thumbnail: 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=80',
+    description: 'Tạo prototype tương tác chuyên nghiệp với Figma',
+    thumbnail: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80',
     status: 'ongoing'
   },
   {
     id: '8',
-    title: 'Photoshop for Beginners',
-    instructor: 'Võ Thị F',
-    progress: 20,
-    rating: 4.5,
-    totalHours: 15,
-    students: 7650,
-    level: 'Cơ bản',
-    price: 399000,
-    category: 'Thiết kế',
-    description: 'Học Photoshop từ đầu cho người mới bắt đầu',
-    thumbnail: 'https://images.unsplash.com/photo-1572044162444-ad60f128bdea?w=800&q=80',
+    title: 'JavaScript Nâng Cao',
+    instructor: 'Trương Quốc Anh',
+    progress: 40,
+    rating: 4.7,
+    totalHours: 28,
+    students: 11200,
+    level: 'Nâng cao',
+    price: 649000,
+    category: 'Lập trình',
+    description: 'Nắm vững lập trình bất đồng bộ và Promise trong JavaScript',
+    thumbnail: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80',
     status: 'ongoing'
-  },
+  }
 ];
 
 export const mockAssignments: Assignment[] = [
   {
     id: '1',
     courseId: '1',
-    title: 'Bài tập tuần 4: Data Visualization',
-    type: 'Assignment',
+    title: 'Bài tập tuần 4: Trực quan hóa Dữ liệu',
+    type: 'Bài tập',
     deadline: '2026-01-20',
     status: 'pending'
   },
   {
     id: '2',
     courseId: '3',
-    title: 'Dự án giữa kỳ: Todo App',
-    type: 'Project',
+    title: 'Dự án giửa kỳ: Ứng dụng Quản lý Công việc',
+    type: 'Dự án',
     deadline: '2026-01-25',
     status: 'pending'
   },
   {
     id: '3',
     courseId: '2',
-    title: 'Quiz: Design Principles',
-    type: 'Quiz',
+    title: 'Trắc nghiệm: Nguyên tắc Thiết kế',
+    type: 'Trắc nghiệm',
     deadline: '2026-01-18',
     status: 'pending'
   }
@@ -185,16 +185,16 @@ export const mockAssignments: Assignment[] = [
 export const mockCertificates: Certificate[] = [
   {
     id: '1',
-    courseTitle: 'Digital Marketing Strategy',
+    courseTitle: 'Chiến lược Marketing Số',
     completedDate: '2026-01-10',
-    instructor: 'Phạm Thu D',
+    instructor: 'Phạm Thu Dung',
     thumbnail: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&q=80'
   },
   {
     id: '2',
-    courseTitle: 'Python Basics',
+    courseTitle: 'Python Cơ bản',
     completedDate: '2025-12-15',
-    instructor: 'Dr. Nguyễn Văn A',
+    instructor: 'Dr. Nguyễn Văn An',
     thumbnail: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&q=80'
   }
 ];
@@ -209,7 +209,7 @@ export const recentActivity = [
   {
     id: '2',
     courseId: '3',
-    lesson: 'Bài 25: React Hooks',
+    lesson: 'Bài 25: Hook trong React',
     timestamp: '1 ngày trước'
   }
 ];
