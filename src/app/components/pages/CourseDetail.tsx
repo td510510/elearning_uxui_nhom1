@@ -223,18 +223,22 @@ export function CourseDetail() {
                 Đánh giá từ học viên
               </h2>
               <div className="space-y-4">
-                {[1, 2, 3].map((i) => (
+                {[
+                  { name: 'Nguyễn Nam', feedback: 'Khóa học rất chi tiết và dễ theo dõi. Giảng viên giải thích rõ ràng từng khái niệm.' },
+                  { name: 'Trần Thị Thanh', feedback: 'Nội dung rất thực tiễn, mình đã áp dụng được ngay vào công việc. Cảm ơn giảng viên!' },
+                  { name: 'Lê Minh Toàn', feedback: 'Khóa học tốt, giảng viên hỗ trợ nhanh chóng. Rất đáng giá tiền học phí.' },
+                ].map((review, i) => (
                   <Card key={i}>
                     <CardContent className="p-4">
                       <div className="flex items-start gap-3">
                         <Avatar className="h-10 w-10">
-                          <AvatarImage src={`https://api.dicebear.com/7.x/miniavs/svg?seed=User${i}`} alt={`Học viên ${i}`} />
+                          <AvatarImage src={`https://api.dicebear.com/7.x/miniavs/svg?seed=User${i}`} alt={review.name} />
                           <AvatarFallback>HV</AvatarFallback>
                         </Avatar>
                         <div className="flex-1">
                           <div className="flex items-center justify-between">
                             <p className="font-medium text-gray-900 dark:text-white">
-                              Học viên {i}
+                              {review.name}
                             </p>
                             <div className="flex items-center gap-1">
                               {[1, 2, 3, 4, 5].map((star) => (
@@ -246,8 +250,7 @@ export function CourseDetail() {
                             </div>
                           </div>
                           <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
-                            Khóa học rất hay và bổ ích. Giảng viên giảng dạy rất dễ hiểu và
-                            nhiệt tình hỗ trợ học viên!
+                            {review.feedback}
                           </p>
                           <p className="text-xs text-gray-500 mt-2">3 ngày trước</p>
                         </div>
