@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { WifiOff, RefreshCw, Signal, AlertCircle } from 'lucide-react';
 import { Button } from '@/app/components/ui/button';
 import { Card, CardContent } from '@/app/components/ui/card';
@@ -9,50 +9,18 @@ export function Offline() {
   const [isRetrying, setIsRetrying] = useState(false);
   const [lastChecked, setLastChecked] = useState<Date>(new Date());
 
-  useEffect(() => {
-    const handleOnline = () => {
-      setIsOnline(true);
-      // Reload the page when connection is restored
-      setTimeout(() => {
-        window.location.reload();
-      }, 1000);
-    };
-
-    const handleOffline = () => {
-      setIsOnline(false);
-    };
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
-
   const handleRetry = async () => {
     setIsRetrying(true);
     setLastChecked(new Date());
 
     // Try to fetch a small resource to check connection
     try {
-      const response = await fetch('/favicon.ico', {
-        method: 'HEAD',
-        cache: 'no-cache',
-      });
-
-      if (response.ok) {
-        setIsOnline(true);
-        window.location.reload();
-      }
     } catch (error) {
       // Still offline
     } finally {
       setTimeout(() => {
         setIsOnline(true);
       }, 3000);
-      setTimeout(() => setIsRetrying(false), 4000);
     }
   };
 
