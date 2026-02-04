@@ -1,6 +1,6 @@
 # StudyClub - Nền tảng học tập trực tuyến
 
-Hệ thống website học tập trực tuyến được thiết kế dựa trên nghiên cứu UI/UX chi tiết từ khảo sát 50+ người dùng.
+Hệ thống website học tập trực tuyến được thiết kế dựa trên nghiên cứu UI/UX chi tiết từ khảo sát 50 người dùng.
 
 ## 🎯 Tính năng chính
 
@@ -9,7 +9,7 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 - Hiển thị tiến độ học tập tổng quan
 - Danh sách khóa học đang học dở để tiếp tục nhanh chóng
 - Nhiệm vụ sắp tới (bài tập, dự án, quiz)
-- Chuỗi ngày học liên tục để tăng động lực
+- Hiện thị khóa học gợi ý
 
 ### 2. **Khóa học của tôi**
 
@@ -28,26 +28,25 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 ### 4. **Trang học tập**
 
 - Video player với điều khiển đầy đủ (play/pause, tua, âm lượng)
-- Sidebar hiển thị danh sách bài học và tiến độ
 - **Ghi chú tức thời**: ghi chú trực tiếp tại mốc thời gian video
 - Bình luận và hỏi đáp ngay dưới bài học
-- **AI hỗ trợ**: tóm tắt nội dung, trả lời câu hỏi 24/7
+- **AI hỗ trợ**: trả lời câu hỏi 24/7
 - Thanh tiến độ rõ ràng
 
-### 5. **Hồ sơ cá nhân**
-
-- Thống kê tiến độ tổng, số khóa đang học
-- Chuỗi ngày học liên tục với biểu tượng lửa 🔥
-- Hoạt động gần đây
-- Nhiệm vụ sắp tới
-- Danh sách chứng nhận
-
-### 6. **Thành tựu**
+### 5. **Thành tựu**
 
 - Tất cả chứng nhận đã đạt được
-- **Tải PDF** và **Chia sẻ lên LinkedIn** với 1 click
+- **Chia sẻ lên LinkedIn** với 1 click
 - Gợi ý khóa học tiếp theo dựa trên chuyên ngành
 - Phản hồi của tôi về các khóa học
+
+### 6. **Hồ sơ cá nhân**
+
+- Thống kê tiến độ tổng, số khóa đang học
+- Chuỗi ngày học liên tục với biểu tượng lửa 🔥để tăng động lực
+- Hoạt động gần đây
+- Nhiệm vụ sắp tới
+- Danh sách chứng nhận và có thể tải xuống
 
 ### 7. **Cài đặt**
 
@@ -55,16 +54,12 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 - Tùy chọn thông báo chi tiết
 - **Cài đặt ghi chú**: tự động lưu, đồng bộ, font chữ
 - **Đồng bộ lịch** với Google Calendar/Outlook
-- Bảo mật và xác thực hai yếu tố
-- Quản lý thanh toán
 
 ### 8. **Chi tiết khóa học**
 
 - Thông tin đầy đủ về khóa học
 - Outline chi tiết với accordion
-- Xem trước bài học miễn phí
 - Đánh giá từ học viên
-- Thông tin giảng viên
 - Sticky card bên phải để mua/đăng ký
 
 ## 🎨 Thiết kế UI/UX
@@ -82,7 +77,6 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 
 1. **Thông tin dày đặc (38%)** → Card layout với padding/margin lớn
 2. **Màu sắc mỏi mắt (38%)** → Dark mode + màu xanh dịu mắt
-3. **Tốc độ tải chậm (38%)** → Lazy loading, tối ưu hình ảnh
 
 ## 🛠️ Công nghệ sử dụng
 
@@ -96,8 +90,7 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 ## 📱 Responsive Design
 
 - **Desktop-first**: Ưu tiên trải nghiệm trên desktop (theo nghiên cứu, 40% không học trên mobile)
-- Mobile được hỗ trợ nhưng không phải trọng tâm
-- Breakpoints: sm, md, lg, xl
+- Mobile: Chưa được hỗ trợ
 
 ## 🚀 Cài đặt và chạy
 
@@ -141,16 +134,15 @@ Thiết kế dựa trên báo cáo nghiên cứu chi tiết:
 
 - Khảo sát 50 người dùng
 - Phân tích pain points
-- User persona: "Career Climber", "Academic Hunter", "Desktop Purist"
 - Insight: "Học để dùng" hơn là "Học để chơi"
 
 ---
 
 **Môn**: Thiết kế giao diện người dùng
-
-**Nhóm thực hiện**: Nhóm 1
 **Giảng viên hướng dẫn**: ThS. Nguyễn Thành Luân
 **Trường**: Đại học Công Nghệ Thông Tin - ĐHQG TP.HCM
+
+**Nhóm thực hiện**: Nhóm 1
 
 **Link sản phẩm:** https://elearning-uxui-nhom1.vercel.app
 
