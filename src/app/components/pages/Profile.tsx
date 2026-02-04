@@ -23,12 +23,12 @@ export function Profile() {
         <CardContent className="p-6">
           <div className="flex flex-col gap-4">
             <div className="flex flex-col gap-1">
-              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Nguyễn Văn An</h1>
+              <h1 className="text-2xl font-bold text-gray-900 dark:text-white">Trần Thùy Chi</h1>
             </div>
             <div className="flex flex-col lg:flex-row lg:items-start gap-6">
               <div className="flex items-center gap-4 flex-1">
                 <Avatar className="h-20 w-20 border border-[#d7e2ff] dark:border-gray-600">
-                  <AvatarImage src="https://api.dicebear.com/7.x/miniavs/svg?seed=student" alt="Avatar" />
+                  <AvatarImage src="https://api.dicebear.com/9.x/open-peeps/svg?seed=Aneka" alt="Avatar" />
                   <AvatarFallback>
                     <div className="h-full w-full rounded-full bg-gray-200 dark:bg-gray-700" />
                   </AvatarFallback>
@@ -186,7 +186,7 @@ export function Profile() {
               <div className="bg-gradient-to-r from-[#6d7bff] to-[#7fe1ff] p-5 text-white">
                 <p className="text-xs">CHỨNG CHỈ HOÀN THÀNH</p>
                 <h3 className="text-lg font-semibold">Trải nghiệm Người dùng Chuyên sâu</h3>
-                <p className="text-xs mt-4">Cấp cho: Nguyễn Văn An</p>
+                <p className="text-xs mt-4">Cấp cho: Trần Thùy Chi</p>
                 <p className="text-xs">Ngày hoàn thành: 25/12/2025</p>
               </div>
               <div className="flex items-center gap-3 p-3 bg-white">
