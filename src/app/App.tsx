@@ -15,6 +15,8 @@ import { Cart } from '@/app/components/pages/Cart';
 import { Order } from '@/app/components/pages/Order';
 import { Login } from '@/app/components/pages/Login';
 import { Register } from '@/app/components/pages/Register';
+import { NotFound } from '@/app/components/pages/NotFound';
+import { Offline } from '@/app/components/pages/Offline';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -61,6 +63,12 @@ function AppRoutes() {
       <Route path="/settings" element={<ProtectedRoute><Layout><Settings /></Layout></ProtectedRoute>} />
       <Route path="/cart" element={<ProtectedRoute><Layout><Cart /></Layout></ProtectedRoute>} />
       <Route path="/order" element={<ProtectedRoute><Layout><Order /></Layout></ProtectedRoute>} />
+
+      {/* Utility routes */}
+      <Route path="/offline" element={<Offline />} />
+
+      {/* 404 - Catch all */}
+      <Route path="*" element={<Layout><NotFound /></Layout>} />
     </Routes>
   );
 }
