@@ -27,10 +27,10 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 
 ### 4. **Trang học tập**
 
-- Video player với điều khiển đầy đủ (play/pause, tua, âm lượng)
+- Video player với điều khiển đầy đủ (play/pause, âm lượng)
 - **Ghi chú tức thời**: ghi chú trực tiếp tại mốc thời gian video
 - Bình luận và hỏi đáp ngay dưới bài học
-- **AI hỗ trợ**: trả lời câu hỏi 24/7
+- **AI hỗ trợ**: trả lời câu hỏi 24/7, tóm tắt bài học
 - Thanh tiến độ rõ ràng
 
 ### 5. **Thành tựu**
