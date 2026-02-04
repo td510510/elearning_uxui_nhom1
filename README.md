@@ -1,28 +1,32 @@
-# EduLearn - Nền tảng học tập trực tuyến
+# StudyClub - Nền tảng học tập trực tuyến
 
 Hệ thống website học tập trực tuyến được thiết kế dựa trên nghiên cứu UI/UX chi tiết từ khảo sát 50+ người dùng.
 
 ## 🎯 Tính năng chính
 
 ### 1. **Dashboard (Trang chủ)**
+
 - Hiển thị tiến độ học tập tổng quan
 - Danh sách khóa học đang học dở để tiếp tục nhanh chóng
 - Nhiệm vụ sắp tới (bài tập, dự án, quiz)
 - Chuỗi ngày học liên tục để tăng động lực
 
 ### 2. **Khóa học của tôi**
+
 - Quản lý tất cả khóa học đã đăng ký
 - Chuyển đổi linh hoạt giữa List View và Grid View
 - Lọc theo trạng thái (đang học, hoàn thành)
 - Thanh tiến độ cho từng khóa học
 
 ### 3. **Khám phá**
+
 - Bộ lọc đa chiều: chủ đề, cấp độ, giá, đánh giá
 - Hiển thị Grid và List view
 - Thêm vào yêu thích
 - Thông tin đầy đủ về giảng viên, học viên, thời lượng
 
 ### 4. **Trang học tập**
+
 - Video player với điều khiển đầy đủ (play/pause, tua, âm lượng)
 - Sidebar hiển thị danh sách bài học và tiến độ
 - **Ghi chú tức thời**: ghi chú trực tiếp tại mốc thời gian video
@@ -31,6 +35,7 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 - Thanh tiến độ rõ ràng
 
 ### 5. **Hồ sơ cá nhân**
+
 - Thống kê tiến độ tổng, số khóa đang học
 - Chuỗi ngày học liên tục với biểu tượng lửa 🔥
 - Hoạt động gần đây
@@ -38,12 +43,14 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 - Danh sách chứng nhận
 
 ### 6. **Thành tựu**
+
 - Tất cả chứng nhận đã đạt được
 - **Tải PDF** và **Chia sẻ lên LinkedIn** với 1 click
 - Gợi ý khóa học tiếp theo dựa trên chuyên ngành
 - Phản hồi của tôi về các khóa học
 
 ### 7. **Cài đặt**
+
 - Quản lý tài khoản
 - Tùy chọn thông báo chi tiết
 - **Cài đặt ghi chú**: tự động lưu, đồng bộ, font chữ
@@ -52,6 +59,7 @@ Hệ thống website học tập trực tuyến được thiết kế dựa trê
 - Quản lý thanh toán
 
 ### 8. **Chi tiết khóa học**
+
 - Thông tin đầy đủ về khóa học
 - Outline chi tiết với accordion
 - Xem trước bài học miễn phí
@@ -111,6 +119,7 @@ Toàn bộ dữ liệu khóa học, bài tập, chứng nhận được mock tro
 ## 🎯 Đối tượng người dùng
 
 Dựa trên khảo sát:
+
 - **86%** trong độ tuổi 18-34
 - **42%** nhân viên văn phòng
 - **22%** học sinh - sinh viên
@@ -129,6 +138,7 @@ Dựa trên khảo sát:
 ## 📝 Tham khảo
 
 Thiết kế dựa trên báo cáo nghiên cứu chi tiết:
+
 - Khảo sát 50 người dùng
 - Phân tích pain points
 - User persona: "Career Climber", "Academic Hunter", "Desktop Purist"
@@ -136,6 +146,12 @@ Thiết kế dựa trên báo cáo nghiên cứu chi tiết:
 
 ---
 
-**Nhóm thực hiện**: IE106.F12.CN2.CNTT
+**Môn**: Thiết kế giao diện người dùng
+
+**Nhóm thực hiện**: Nhóm 1
 **Giảng viên hướng dẫn**: ThS. Nguyễn Thành Luân
 **Trường**: Đại học Công Nghệ Thông Tin - ĐHQG TP.HCM
+
+**Link sản phẩm:** https://elearning-uxui-nhom1.vercel.app
+
+**Lưu ý:** Sản phẩm chỉ mô phỏng giao diện và tương tác chứ không phải là một trang web hoàn chỉnh
