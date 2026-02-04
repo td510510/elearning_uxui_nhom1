@@ -205,13 +205,16 @@ export function LearningPage() {
                   <Card className="border border-[#e4e9f5] shadow-sm">
                     <CardContent className="p-4 space-y-3">
                       <p className="text-sm font-semibold text-gray-800">Bình luận mới</p>
-                      {[1, 2].map((i) => (
-                        <div key={i} className="border border-[#e4e9f5] rounded-lg p-3 text-sm text-gray-700">
+                      {[
+                        { user: 'Nguyễn Hoàng', time: '2 giờ trước', content: 'Bài học này rất hữu ích, cảm ơn giáo viên!' },
+                        { user: 'Trần Thị Bình', time: '1 giờ trước', content: 'Có thể giải thích thêm về phần cấu trúc điều kiện không?' },
+                      ].map((comment, idx) => (
+                        <div key={idx} className="border border-[#e4e9f5] rounded-lg p-3 text-sm text-gray-700">
                           <div className="flex items-center justify-between mb-1">
-                            <span className="font-semibold text-gray-900">User {i}</span>
-                            <span className="text-xs text-gray-500">2 giờ trước</span>
+                            <span className="font-semibold text-gray-900">{comment.user}</span>
+                            <span className="text-xs text-gray-500">{comment.time}</span>
                           </div>
-                          <p>Nội dung bình luận ngắn gọn hiển thị ở đây.</p>
+                          <p>{comment.content}</p>
                         </div>
                       ))}
                     </CardContent>
