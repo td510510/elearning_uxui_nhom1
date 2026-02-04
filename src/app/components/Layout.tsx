@@ -265,7 +265,7 @@ export function Layout({ children }: LayoutProps) {
                 <DropdownMenuTrigger>
                   <Button variant="ghost" className="relative h-10 w-10 rounded-full p-0">
                     <Avatar>
-                      <AvatarImage src={user?.avatar || 'https://api.dicebear.com/7.x/avataaars/svg?seed=user'} />
+                      <AvatarImage src={'https://api.dicebear.com/9.x/open-peeps/svg?seed=Aneka'} />
                       <AvatarFallback>{user?.name?.charAt(0).toUpperCase() || 'U'}</AvatarFallback>
                     </Avatar>
                   </Button>
