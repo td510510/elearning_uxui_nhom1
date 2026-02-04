@@ -67,17 +67,17 @@ export function Layout({ children }: LayoutProps) {
     {
       id: 'f1',
       title: 'React & TypeScript - Toàn diện',
-      progress: '35% hoàn thành',
+      instructor: 'Nguyễn Văn An',
     },
     {
       id: 'f2',
       title: 'UI/UX Pro - Thiết kế hệ thống',
-      progress: 'Bắt đầu học',
+      instructor: 'Trần Thị Bình',
     },
     {
       id: 'f3',
       title: 'JavaScript Nâng cao',
-      progress: '12 bài đã lưu',
+      instructor: 'Lê Văn Cường',
     },
   ];
 
@@ -237,7 +237,7 @@ export function Layout({ children }: LayoutProps) {
                       {favoriteCourses.map((item) => (
                         <DropdownMenuItem key={item.id} className="flex flex-col items-start gap-1 rounded-lg py-2">
                           <span className="text-sm font-semibold text-gray-900">{item.title}</span>
-                          <span className="text-xs text-gray-500">{item.progress}</span>
+                          <span className="text-xs text-gray-500">{item.instructor}</span>
                         </DropdownMenuItem>
                       ))}
                     </div>
