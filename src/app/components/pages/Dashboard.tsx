@@ -23,6 +23,10 @@ export function Dashboard() {
     ongoingCourses.reduce((sum, c) => sum + c.progress, 0) / ongoingCourses.length
   );
 
+  function getChauTestData() {
+    console.log('Chau test data function called', import.meta.env.VITE_CHAU_TEST);
+  }
+
   // Show different content for non-authenticated users
   if (!isAuthenticated) {
     return (
