@@ -79,6 +79,7 @@ export default function App() {
       <AuthProvider>
         <BrowserRouter>
           <ScrollToTop />
+          <div id="chau-test" data-chau-test={import.meta.env.VITE_CHAU_TEST} hidden />
           <AppRoutes />
         </BrowserRouter>
       </AuthProvider>
